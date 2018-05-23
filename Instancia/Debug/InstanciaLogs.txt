@@ -1,0 +1,354 @@
+[TRACE] 00:30:53:576 Instancia Logs/(664:664): Inicializando proceso Instancia
+[TRACE] 00:30:53:577 Instancia Logs/(664:664): Me conecte con el Coordinador
+[TRACE] 00:31:59:606 Instancia Logs/(709:709): Inicializando proceso Instancia
+[TRACE] 00:31:59:607 Instancia Logs/(709:709): Me conecte con el Coordinador
+[TRACE] 00:34:01:166 Instancia Logs/(838:838): Inicializando proceso Instancia
+[TRACE] 00:34:01:166 Instancia Logs/(838:838): Me conecte con el Coordinador
+[TRACE] 00:34:26:375 Instancia Logs/(846:846): Inicializando proceso Instancia
+[TRACE] 00:34:26:376 Instancia Logs/(846:846): Me conecte con el Coordinador
+[TRACE] 21:01:14:133 Instancia Logs/(12832:12832): Inicializando proceso Instancia
+[TRACE] 21:01:14:134 Instancia Logs/(12832:12832): Me conecte con el Coordinador
+[TRACE] 21:02:21:963 Instancia Logs/(12896:12896): Inicializando proceso Instancia
+[TRACE] 21:02:21:966 Instancia Logs/(12896:12896): Me conecte con el Coordinador
+[TRACE] 21:19:10:899 Instancia Logs/(13263:13263): Inicializando proceso Instancia
+[TRACE] 21:19:10:901 Instancia Logs/(13263:13263): Me conecte con el Coordinador
+[TRACE] 21:20:31:381 Instancia Logs/(13350:13350): Inicializando proceso Instancia
+[TRACE] 21:20:31:382 Instancia Logs/(13350:13350): Me conecte con el Coordinador
+[TRACE] 14:18:33:860 Instancia Logs/(10840:10840): Inicializando proceso Instancia
+[TRACE] 14:18:33:867 Instancia Logs/(10840:10840): Me conecte con el Coordinador
+[TRACE] 14:22:38:625 Instancia Logs/(10952:10952): Inicializando proceso Instancia
+[TRACE] 14:22:46:811 Instancia Logs/(10959:10959): Inicializando proceso Instancia
+[TRACE] 14:22:46:812 Instancia Logs/(10959:10959): Me conecte con el Coordinador
+[TRACE] 16:20:37:374 Instancia Logs/(13912:13912): Inicializando proceso Instancia
+[TRACE] 16:20:37:376 Instancia Logs/(13912:13912): Me conecte con el Coordinador
+[TRACE] 23:49:32:295 Instancia Logs/(18673:18673): Inicializando proceso Instancia
+[TRACE] 23:49:32:296 Instancia Logs/(18673:18673): Me conecte con el Coordinador
+[INFO] 23:49:32:296 Instancia Logs/(18673:18673): BIT ARRAY CREADO CON EXITO
+[TRACE] 02:46:59:808 Instancia Logs/(20584:20584): Inicializando proceso Instancia
+[TRACE] 02:46:59:811 Instancia Logs/(20584:20584): Me conecte con el Coordinador
+[INFO] 02:46:59:811 Instancia Logs/(20584:20584): BIT ARRAY CREADO CON EXITO
+[TRACE] 02:49:27:998 Instancia Logs/(20715:20715): Inicializando proceso Instancia
+[TRACE] 02:49:27:999 Instancia Logs/(20715:20715): Me conecte con el Coordinador
+[INFO] 02:49:27:999 Instancia Logs/(20715:20715): BIT ARRAY CREADO CON EXITO
+[TRACE] 02:49:49:808 Instancia Logs/(20766:20766): Inicializando proceso Instancia
+[TRACE] 02:49:49:809 Instancia Logs/(20766:20766): Me conecte con el Coordinador
+[INFO] 02:49:49:809 Instancia Logs/(20766:20766): BIT ARRAY CREADO CON EXITO
+[INFO] 02:49:49:810 Instancia Logs/(20766:20766): Escribo en TABLA DE ENTRADAS.
+[INFO] 02:49:49:810 Instancia Logs/(20766:20766): Clave = jugador
+[INFO] 02:49:49:810 Instancia Logs/(20766:20766): Nro de Entrada = 0
+[INFO] 02:49:49:810 Instancia Logs/(20766:20766): Tamaño valor = 5
+[INFO] 02:49:49:810 Instancia Logs/(20766:20766): Escribo en STORAGE.
+[INFO] 02:49:49:810 Instancia Logs/(20766:20766): Valor = messi. 
+
+[TRACE] 02:52:08:279 Instancia Logs/(20833:20833): Inicializando proceso Instancia
+[TRACE] 02:52:08:279 Instancia Logs/(20833:20833): Me conecte con el Coordinador
+[INFO] 02:52:08:280 Instancia Logs/(20833:20833): BIT ARRAY CREADO CON EXITO
+[INFO] 02:52:08:280 Instancia Logs/(20833:20833): Escribo en TABLA DE ENTRADAS.
+[INFO] 02:52:08:280 Instancia Logs/(20833:20833): Clave = jugador
+[INFO] 02:52:08:280 Instancia Logs/(20833:20833): Nro de Entrada = 0
+[INFO] 02:52:08:280 Instancia Logs/(20833:20833): Tamaño valor = 14
+[INFO] 02:52:08:280 Instancia Logs/(20833:20833): Escribo en STORAGE.
+[INFO] 02:52:08:280 Instancia Logs/(20833:20833): Valor = messiaaaaaaaas. 
+
+[TRACE] 02:52:38:879 Instancia Logs/(20876:20876): Inicializando proceso Instancia
+[TRACE] 02:52:38:879 Instancia Logs/(20876:20876): Me conecte con el Coordinador
+[INFO] 02:52:38:879 Instancia Logs/(20876:20876): BIT ARRAY CREADO CON EXITO
+[INFO] 02:52:38:880 Instancia Logs/(20876:20876): Escribo en TABLA DE ENTRADAS.
+[INFO] 02:52:38:880 Instancia Logs/(20876:20876): Clave = jugador
+[INFO] 02:52:38:880 Instancia Logs/(20876:20876): Nro de Entrada = 0
+[INFO] 02:52:38:880 Instancia Logs/(20876:20876): Tamaño valor = 44
+[INFO] 02:52:38:880 Instancia Logs/(20876:20876): Escribo en STORAGE.
+[INFO] 02:52:38:880 Instancia Logs/(20876:20876): Valor = messiaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa. 
+
+[TRACE] 02:54:00:999 Instancia Logs/(20950:20950): Inicializando proceso Instancia
+[TRACE] 02:54:00:0 Instancia Logs/(20950:20950): Me conecte con el Coordinador
+[INFO] 02:54:00:0 Instancia Logs/(20950:20950): BIT ARRAY CREADO CON EXITO
+[TRACE] 16:58:30:87 Instancia Logs/(23898:23898): Inicializando proceso Instancia
+[TRACE] 16:58:30:88 Instancia Logs/(23898:23898): Me conecte con el Coordinador
+[INFO] 16:58:30:88 Instancia Logs/(23898:23898): BIT ARRAY CREADO CON EXITO
+[INFO] 16:58:30:88 Instancia Logs/(23898:23898): Escribo en la posicion = 0.
+[INFO] 16:58:30:88 Instancia Logs/(23898:23898): Escribo en TABLA DE ENTRADAS.
+[INFO] 16:58:30:88 Instancia Logs/(23898:23898): Clave = futbol
+[INFO] 16:58:30:88 Instancia Logs/(23898:23898): Nro de Entrada = 0
+[INFO] 16:58:30:88 Instancia Logs/(23898:23898): Tamaño valor = 5
+[INFO] 16:58:30:88 Instancia Logs/(23898:23898): Escribo en STORAGE.
+[INFO] 16:58:30:88 Instancia Logs/(23898:23898): Valor = messi. 
+
+[TRACE] 16:59:22:119 Instancia Logs/(23941:23941): Inicializando proceso Instancia
+[TRACE] 16:59:22:119 Instancia Logs/(23941:23941): Me conecte con el Coordinador
+[INFO] 16:59:22:119 Instancia Logs/(23941:23941): BIT ARRAY CREADO CON EXITO
+[TRACE] 17:00:50:951 Instancia Logs/(24021:24021): Inicializando proceso Instancia
+[TRACE] 17:00:50:952 Instancia Logs/(24021:24021): Me conecte con el Coordinador
+[INFO] 17:00:50:952 Instancia Logs/(24021:24021): BIT ARRAY CREADO CON EXITO
+[TRACE] 17:01:23:621 Instancia Logs/(24035:24035): Inicializando proceso Instancia
+[TRACE] 17:01:23:621 Instancia Logs/(24035:24035): Me conecte con el Coordinador
+[INFO] 17:01:23:622 Instancia Logs/(24035:24035): BIT ARRAY CREADO CON EXITO
+[TRACE] 17:01:50:871 Instancia Logs/(24120:24120): Inicializando proceso Instancia
+[TRACE] 17:01:50:876 Instancia Logs/(24120:24120): Me conecte con el Coordinador
+[INFO] 17:01:50:876 Instancia Logs/(24120:24120): BIT ARRAY CREADO CON EXITO
+[TRACE] 17:03:07:744 Instancia Logs/(24189:24189): Inicializando proceso Instancia
+[TRACE] 17:03:07:744 Instancia Logs/(24189:24189): Me conecte con el Coordinador
+[INFO] 17:03:07:745 Instancia Logs/(24189:24189): BIT ARRAY CREADO CON EXITO
+[TRACE] 17:47:02:915 Instancia Logs/(25653:25653): Inicializando proceso Instancia
+[TRACE] 17:47:02:916 Instancia Logs/(25653:25653): Me conecte con el Coordinador
+[INFO] 17:47:02:916 Instancia Logs/(25653:25653): BIT ARRAY CREADO CON EXITO
+[TRACE] 17:47:20:455 Instancia Logs/(25691:25691): Inicializando proceso Instancia
+[TRACE] 17:47:20:455 Instancia Logs/(25691:25691): Me conecte con el Coordinador
+[INFO] 17:47:20:456 Instancia Logs/(25691:25691): BIT ARRAY CREADO CON EXITO
+[INFO] 17:47:20:456 Instancia Logs/(25691:25691): Cantidad de entradas a escribir por mess = 1 
+
+[INFO] 17:47:20:456 Instancia Logs/(25691:25691): Escribo en la posicion = 0.
+[INFO] 17:47:20:456 Instancia Logs/(25691:25691): Escribo en TABLA DE ENTRADAS.
+[INFO] 17:47:20:456 Instancia Logs/(25691:25691): Clave = futbol
+[INFO] 17:47:20:456 Instancia Logs/(25691:25691): Nro de Entrada = 0
+[INFO] 17:47:20:456 Instancia Logs/(25691:25691): Tamaño valor = 4
+[INFO] 17:47:20:456 Instancia Logs/(25691:25691): Escribo en STORAGE.
+[INFO] 17:47:20:456 Instancia Logs/(25691:25691): Valor = mess. 
+
+[TRACE] 19:08:12:756 Instancia Logs/(27355:27355): Inicializando proceso Instancia
+[TRACE] 19:08:12:757 Instancia Logs/(27355:27355): Me conecte con el Coordinador
+[INFO] 19:08:12:757 Instancia Logs/(27355:27355): BIT ARRAY CREADO CON EXITO
+[TRACE] 19:11:11:678 Instancia Logs/(27493:27493): Inicializando proceso Instancia
+[TRACE] 19:11:11:679 Instancia Logs/(27493:27493): Me conecte con el Coordinador
+[INFO] 19:11:11:679 Instancia Logs/(27493:27493): BIT ARRAY CREADO CON EXITO
+[INFO] 19:11:11:679 Instancia Logs/(27493:27493): Cantidad de entradas a escribir por mess1234TRAEMELACOPA = 5 
+
+[INFO] 19:11:11:679 Instancia Logs/(27493:27493): Escribo en la posicion = 0.
+[INFO] 19:11:11:679 Instancia Logs/(27493:27493): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:11:11:679 Instancia Logs/(27493:27493): Clave = futbol
+[INFO] 19:11:11:679 Instancia Logs/(27493:27493): Nro de Entrada = 0
+[INFO] 19:11:11:679 Instancia Logs/(27493:27493): Tamaño valor = 4
+[INFO] 19:11:11:679 Instancia Logs/(27493:27493): Escribo en STORAGE.
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Valor = mess. 
+
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Escribo en la posicion = 1.
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Clave = futbol
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Nro de Entrada = 1
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Tamaño valor = 4
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Escribo en STORAGE.
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Valor = 1234. 
+
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Escribo en la posicion = 2.
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Clave = futbol
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Nro de Entrada = 2
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Tamaño valor = 4
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Escribo en STORAGE.
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Valor = TRAE. 
+
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Escribo en la posicion = 3.
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Clave = futbol
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Nro de Entrada = 3
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Tamaño valor = 4
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Escribo en STORAGE.
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Valor = MELA. 
+
+[INFO] 19:11:11:680 Instancia Logs/(27493:27493): Escribo en la posicion = 4.
+[INFO] 19:11:11:681 Instancia Logs/(27493:27493): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:11:11:681 Instancia Logs/(27493:27493): Clave = futbol
+[INFO] 19:11:11:681 Instancia Logs/(27493:27493): Nro de Entrada = 4
+[INFO] 19:11:11:681 Instancia Logs/(27493:27493): Tamaño valor = 4
+[INFO] 19:11:11:681 Instancia Logs/(27493:27493): Escribo en STORAGE.
+[INFO] 19:11:11:681 Instancia Logs/(27493:27493): Valor = COPA. 
+
+[TRACE] 19:13:21:290 Instancia Logs/(27554:27554): Inicializando proceso Instancia
+[TRACE] 19:13:21:290 Instancia Logs/(27554:27554): Me conecte con el Coordinador
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): BIT ARRAY CREADO CON EXITO
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Cantidad de entradas a escribir por mess1234TRAEMELACOPA = 5 
+
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Escribo en la posicion = 0.
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Clave = futbol
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Nro de Entrada = 0
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Tamaño valor = 4
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Escribo en STORAGE.
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Valor = mess. 
+
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Escribo en la posicion = 1.
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Clave = futbol
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Nro de Entrada = 1
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Tamaño valor = 4
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Escribo en STORAGE.
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Valor = 1234. 
+
+[INFO] 19:13:21:291 Instancia Logs/(27554:27554): Escribo en la posicion = 2.
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Clave = futbol
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Nro de Entrada = 2
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Tamaño valor = 4
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Escribo en STORAGE.
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Valor = TRAE. 
+
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Escribo en la posicion = 3.
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Clave = futbol
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Nro de Entrada = 3
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Tamaño valor = 4
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Escribo en STORAGE.
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Valor = MELA. 
+
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Escribo en la posicion = 4.
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Clave = futbol
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Nro de Entrada = 4
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Tamaño valor = 4
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Escribo en STORAGE.
+[INFO] 19:13:21:292 Instancia Logs/(27554:27554): Valor = COPA. 
+
+[TRACE] 19:20:38:826 Instancia Logs/(27866:27866): Inicializando proceso Instancia
+[TRACE] 19:20:38:827 Instancia Logs/(27866:27866): Me conecte con el Coordinador
+[INFO] 19:20:38:827 Instancia Logs/(27866:27866): BIT ARRAY CREADO CON EXITO
+[INFO] 19:20:38:827 Instancia Logs/(27866:27866): Cantidad de entradas a escribir por mess1234TRAEMELACOPA = 5 
+
+[INFO] 19:20:38:827 Instancia Logs/(27866:27866): Escribo en la posicion = 0.
+[INFO] 19:20:38:827 Instancia Logs/(27866:27866): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:20:38:827 Instancia Logs/(27866:27866): Clave = futbol
+[INFO] 19:20:38:827 Instancia Logs/(27866:27866): Nro de Entrada = 0
+[INFO] 19:20:38:827 Instancia Logs/(27866:27866): Tamaño valor = 4
+[INFO] 19:20:38:827 Instancia Logs/(27866:27866): Escribo en STORAGE.
+[INFO] 19:20:38:827 Instancia Logs/(27866:27866): Valor = mess. 
+
+[INFO] 19:20:38:827 Instancia Logs/(27866:27866): Escribo en la posicion = 1.
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Clave = futbol
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Nro de Entrada = 1
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Tamaño valor = 4
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Escribo en STORAGE.
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Valor = 1234. 
+
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Escribo en la posicion = 2.
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Clave = futbol
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Nro de Entrada = 2
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Tamaño valor = 4
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Escribo en STORAGE.
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Valor = TRAE. 
+
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Escribo en la posicion = 3.
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Clave = futbol
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Nro de Entrada = 3
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Tamaño valor = 4
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Escribo en STORAGE.
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Valor = MELA. 
+
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Escribo en la posicion = 4.
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Clave = futbol
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Nro de Entrada = 4
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Tamaño valor = 4
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Escribo en STORAGE.
+[INFO] 19:20:38:828 Instancia Logs/(27866:27866): Valor = COPA. 
+
+[TRACE] 19:22:00:117 Instancia Logs/(27920:27920): Inicializando proceso Instancia
+[TRACE] 19:22:00:117 Instancia Logs/(27920:27920): Me conecte con el Coordinador
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): BIT ARRAY CREADO CON EXITO
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Cantidad de entradas a escribir por mess1234TRAEMELACOPA = 5 
+
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Escribo en la posicion = 0.
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Clave = futbol
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Nro de Entrada = 0
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Tamaño valor = 4
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Escribo en STORAGE.
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Valor = mess. 
+
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Escribo en la posicion = 1.
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Clave = futbol
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Nro de Entrada = 1
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Tamaño valor = 4
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Escribo en STORAGE.
+[INFO] 19:22:00:118 Instancia Logs/(27920:27920): Valor = 1234. 
+
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Escribo en la posicion = 2.
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Clave = futbol
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Nro de Entrada = 2
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Tamaño valor = 4
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Escribo en STORAGE.
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Valor = TRAE. 
+
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Escribo en la posicion = 3.
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Clave = futbol
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Nro de Entrada = 3
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Tamaño valor = 4
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Escribo en STORAGE.
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Valor = MELA. 
+
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Escribo en la posicion = 4.
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Clave = futbol
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Nro de Entrada = 4
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Tamaño valor = 4
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Escribo en STORAGE.
+[INFO] 19:22:00:119 Instancia Logs/(27920:27920): Valor = COPA. 
+
+[TRACE] 19:22:47:327 Instancia Logs/(27964:27964): Inicializando proceso Instancia
+[TRACE] 19:22:47:328 Instancia Logs/(27964:27964): Me conecte con el Coordinador
+[INFO] 19:22:47:328 Instancia Logs/(27964:27964): BIT ARRAY CREADO CON EXITO
+[INFO] 19:22:47:328 Instancia Logs/(27964:27964): Cantidad de entradas a escribir por mess1234TRAEMELACO = 5 
+
+[INFO] 19:22:47:328 Instancia Logs/(27964:27964): Escribo en la posicion = 0.
+[INFO] 19:22:47:328 Instancia Logs/(27964:27964): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:22:47:328 Instancia Logs/(27964:27964): Clave = futbol
+[INFO] 19:22:47:328 Instancia Logs/(27964:27964): Nro de Entrada = 0
+[INFO] 19:22:47:328 Instancia Logs/(27964:27964): Tamaño valor = 4
+[INFO] 19:22:47:328 Instancia Logs/(27964:27964): Escribo en STORAGE.
+[INFO] 19:22:47:328 Instancia Logs/(27964:27964): Valor = mess. 
+
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Escribo en la posicion = 1.
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Clave = futbol
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Nro de Entrada = 1
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Tamaño valor = 4
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Escribo en STORAGE.
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Valor = 1234. 
+
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Escribo en la posicion = 2.
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Clave = futbol
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Nro de Entrada = 2
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Tamaño valor = 4
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Escribo en STORAGE.
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Valor = TRAE. 
+
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Escribo en la posicion = 3.
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Clave = futbol
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Nro de Entrada = 3
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Tamaño valor = 4
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Escribo en STORAGE.
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Valor = MELA. 
+
+[INFO] 19:22:47:329 Instancia Logs/(27964:27964): Escribo en la posicion = 4.
+[INFO] 19:22:47:330 Instancia Logs/(27964:27964): Escribo en TABLA DE ENTRADAS.
+[INFO] 19:22:47:330 Instancia Logs/(27964:27964): Clave = futbol
+[INFO] 19:22:47:330 Instancia Logs/(27964:27964): Nro de Entrada = 4
+[INFO] 19:22:47:330 Instancia Logs/(27964:27964): Tamaño valor = 2
+[INFO] 19:22:47:330 Instancia Logs/(27964:27964): Escribo en STORAGE.
+[INFO] 19:22:47:330 Instancia Logs/(27964:27964): Valor = CO. 
+
+[TRACE] 16:30:26:378 Instancia Logs/(5541:5541): Inicializando proceso Instancia
+[TRACE] 16:30:26:380 Instancia Logs/(5541:5541): Me conecte con el Coordinador
+[INFO] 16:30:26:380 Instancia Logs/(5541:5541): BIT ARRAY CREADO CON EXITO
+[TRACE] 16:32:04:309 Instancia Logs/(5614:5614): Inicializando proceso Instancia
+[TRACE] 16:32:04:309 Instancia Logs/(5614:5614): Me conecte con el Coordinador
+[INFO] 16:32:04:310 Instancia Logs/(5614:5614): BIT ARRAY CREADO CON EXITO
+[TRACE] 17:29:08:856 Instancia Logs/(7341:7341): Inicializando proceso Instancia
+[TRACE] 17:29:08:856 Instancia Logs/(7341:7341): Me conecte con el Coordinador
+[INFO] 17:29:08:856 Instancia Logs/(7341:7341): BIT ARRAY CREADO CON EXITO
+[TRACE] 17:31:00:436 Instancia Logs/(7420:7420): Inicializando proceso Instancia
+[TRACE] 17:31:00:436 Instancia Logs/(7420:7420): Me conecte con el Coordinador
+[INFO] 17:31:00:436 Instancia Logs/(7420:7420): BIT ARRAY CREADO CON EXITO
+[TRACE] 17:31:46:316 Instancia Logs/(7461:7461): Inicializando proceso Instancia
+[TRACE] 17:31:52:750 Instancia Logs/(7468:7468): Inicializando proceso Instancia
+[TRACE] 17:31:52:751 Instancia Logs/(7468:7468): Me conecte con el Coordinador
+[INFO] 17:31:52:751 Instancia Logs/(7468:7468): BIT ARRAY CREADO CON EXITO
+[TRACE] 17:32:25:206 Instancia Logs/(7491:7491): Inicializando proceso Instancia
+[TRACE] 17:32:25:206 Instancia Logs/(7491:7491): Me conecte con el Coordinador
+[INFO] 17:32:25:206 Instancia Logs/(7491:7491): BIT ARRAY CREADO CON EXITO

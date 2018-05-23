@@ -1,2 +1,1 @@
-# ReDistinto
-chris puto
+# tp-2018-1c-EnMiCompuCompilaba

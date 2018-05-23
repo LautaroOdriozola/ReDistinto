@@ -1,0 +1,1 @@
+[TRACE] 20:26:38:907 Instancia Logs/(29518:29518): Inicializando proceso Instancia
