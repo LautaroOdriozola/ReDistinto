@@ -26,14 +26,13 @@ endif
 all: Instancia
 
 dependents:
-	-cd /home/utnso/workspace/commons/Debug && $(MAKE) all
-	-cd /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug && $(MAKE) all
+	-cd /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug && $(MAKE) clean all
 
 # Tool invocations
-Instancia: $(OBJS) $(USER_OBJS) /home/utnso/workspace/commons/Debug/libcommons.so /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/libsocket.so
+Instancia: $(OBJS) $(USER_OBJS) /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/libsocket.so
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	gcc -L"/home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug" -L"/home/utnso/workspace/commons/Debug" -o "Instancia" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc -L"/home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug" -o "Instancia" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -43,7 +42,6 @@ clean:
 	-@echo ' '
 
 .PHONY: all clean dependents
-/home/utnso/workspace/commons/Debug/libcommons.so:
 /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/libsocket.so:
 
 -include ../makefile.targets

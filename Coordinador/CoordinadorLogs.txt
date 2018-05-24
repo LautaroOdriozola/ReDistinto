@@ -1,1 +1,0 @@
-[TRACE] 20:26:27:770 Coordinador Logs/(29478:29478): Inicializando proceso Coordinador

@@ -352,3 +352,159 @@
 [TRACE] 17:32:25:206 Instancia Logs/(7491:7491): Inicializando proceso Instancia
 [TRACE] 17:32:25:206 Instancia Logs/(7491:7491): Me conecte con el Coordinador
 [INFO] 17:32:25:206 Instancia Logs/(7491:7491): BIT ARRAY CREADO CON EXITO
+[TRACE] 18:21:03:153 Instancia Logs/(4554:4554): Inicializando proceso Instancia
+[TRACE] 18:21:03:155 Instancia Logs/(4554:4554): Me conecte con el Coordinador
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): BitArray de STORAGE creado con EXITO
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): Cantidad de entradas a escribir por mess1234TRAEMELACO = 5 
+
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): Escribo en TABLA DE ENTRADAS.
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): Clave = futbol
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): Nro de Entrada = 0
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): Tamaño valor = 18
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): Escribo en STORAGE.
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): Valor o porcion de valor = mess1234TRAEMELACO. 
+
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): Escribo en STORAGE.
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): Valor o porcion de valor = mess1234TRAEMELACO. 
+
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): Escribo en STORAGE.
+[INFO] 18:21:03:155 Instancia Logs/(4554:4554): Valor o porcion de valor = mess1234TRAEMELACO. 
+
+[INFO] 18:21:03:156 Instancia Logs/(4554:4554): Escribo en STORAGE.
+[INFO] 18:21:03:156 Instancia Logs/(4554:4554): Valor o porcion de valor = mess1234TRAEMELACO. 
+
+[INFO] 18:21:03:156 Instancia Logs/(4554:4554): Escribo en STORAGE.
+[INFO] 18:21:03:156 Instancia Logs/(4554:4554): Valor o porcion de valor = mess1234TRAEMELACO. 
+
+[TRACE] 18:22:02:960 Instancia Logs/(4601:4601): Inicializando proceso Instancia
+[TRACE] 18:22:02:960 Instancia Logs/(4601:4601): Me conecte con el Coordinador
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): BitArray de STORAGE creado con EXITO
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Cantidad de entradas a escribir por mess1234TRAEMELACO = 5 
+
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Escribo en TABLA DE ENTRADAS.
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Clave = futbol
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Nro de Entrada = 0
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Tamaño valor = 18
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Escribo en STORAGE.
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Valor o porcion de valor = mess. 
+
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Escribo en STORAGE.
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Valor o porcion de valor = 1234. 
+
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Escribo en STORAGE.
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Valor o porcion de valor = TRAE. 
+
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Escribo en STORAGE.
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Valor o porcion de valor = MELA. 
+
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Escribo en STORAGE.
+[INFO] 18:22:02:961 Instancia Logs/(4601:4601): Valor o porcion de valor = CO. 
+
+[TRACE] 18:26:10:667 Instancia Logs/(4701:4701): Inicializando proceso Instancia
+[TRACE] 18:26:10:668 Instancia Logs/(4701:4701): Me conecte con el Coordinador
+[INFO] 18:26:10:668 Instancia Logs/(4701:4701): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 18:26:10:668 Instancia Logs/(4701:4701): BitArray de STORAGE creado con EXITO
+[INFO] 18:26:10:668 Instancia Logs/(4701:4701): Cantidad de entradas a escribir por mes = 1 
+
+[INFO] 18:26:10:668 Instancia Logs/(4701:4701): Escribo en TABLA DE ENTRADAS.
+[INFO] 18:26:10:668 Instancia Logs/(4701:4701): Clave = futbol
+[INFO] 18:26:10:668 Instancia Logs/(4701:4701): Nro de Entrada = 0
+[INFO] 18:26:10:668 Instancia Logs/(4701:4701): Tamaño valor = 3
+[INFO] 18:26:10:668 Instancia Logs/(4701:4701): Escribo en STORAGE.
+[INFO] 18:26:10:668 Instancia Logs/(4701:4701): Valor o porcion de valor = mes. 
+
+[TRACE] 18:27:16:411 Instancia Logs/(4754:4754): Inicializando proceso Instancia
+[TRACE] 18:27:16:411 Instancia Logs/(4754:4754): Me conecte con el Coordinador
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): BitArray de STORAGE creado con EXITO
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): Cantidad de entradas a escribir por 12341234123412341 = 5 
+
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): Escribo en TABLA DE ENTRADAS.
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): Clave = futbol
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): Nro de Entrada = 0
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): Tamaño valor = 17
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): Escribo en STORAGE.
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): Valor o porcion de valor = 1234. 
+
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): Escribo en STORAGE.
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): Valor o porcion de valor = 1234. 
+
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): Escribo en STORAGE.
+[INFO] 18:27:16:412 Instancia Logs/(4754:4754): Valor o porcion de valor = 1234. 
+
+[INFO] 18:27:16:413 Instancia Logs/(4754:4754): Escribo en STORAGE.
+[INFO] 18:27:16:413 Instancia Logs/(4754:4754): Valor o porcion de valor = 1234. 
+
+[INFO] 18:27:16:413 Instancia Logs/(4754:4754): Escribo en STORAGE.
+[INFO] 18:27:16:413 Instancia Logs/(4754:4754): Valor o porcion de valor = 1. 
+
+[TRACE] 18:42:53:947 Instancia Logs/(5339:5339): Inicializando proceso Instancia
+[TRACE] 18:42:53:948 Instancia Logs/(5339:5339): Me conecte con el Coordinador
+[INFO] 18:42:53:948 Instancia Logs/(5339:5339): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 18:42:53:948 Instancia Logs/(5339:5339): BitArray de STORAGE creado con EXITO
+[TRACE] 18:44:08:522 Instancia Logs/(5441:5441): Inicializando proceso Instancia
+[TRACE] 18:44:08:523 Instancia Logs/(5441:5441): Me conecte con el Coordinador
+[INFO] 18:44:08:523 Instancia Logs/(5441:5441): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 18:44:08:524 Instancia Logs/(5441:5441): BitArray de STORAGE creado con EXITO
+[TRACE] 18:48:47:654 Instancia Logs/(5734:5734): Inicializando proceso Instancia
+[TRACE] 18:48:55:683 Instancia Logs/(5734:5734): Me conecte con el Coordinador
+[INFO] 18:48:55:683 Instancia Logs/(5734:5734): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 18:48:55:683 Instancia Logs/(5734:5734): BitArray de STORAGE creado con EXITO
+[TRACE] 19:03:38:690 Instancia Logs/(6277:6277): Inicializando proceso Instancia
+[TRACE] 19:03:38:691 Instancia Logs/(6277:6277): Me conecte con el Coordinador
+[INFO] 19:03:38:691 Instancia Logs/(6277:6277): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 19:03:38:691 Instancia Logs/(6277:6277): BitArray de STORAGE creado con EXITO
+[TRACE] 19:06:49:142 Instancia Logs/(6379:6379): Inicializando proceso Instancia
+[TRACE] 19:06:57:942 Instancia Logs/(6383:6383): Inicializando proceso Instancia
+[TRACE] 19:06:57:943 Instancia Logs/(6383:6383): Me conecte con el Coordinador
+[INFO] 19:06:57:943 Instancia Logs/(6383:6383): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 19:06:57:944 Instancia Logs/(6383:6383): BitArray de STORAGE creado con EXITO
+[TRACE] 19:08:50:489 Instancia Logs/(6454:6454): Inicializando proceso Instancia
+[TRACE] 19:08:50:489 Instancia Logs/(6454:6454): Me conecte con el Coordinador
+[INFO] 19:08:50:490 Instancia Logs/(6454:6454): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 19:08:50:490 Instancia Logs/(6454:6454): BitArray de STORAGE creado con EXITO
+[TRACE] 23:13:22:250 Instancia Logs/(7717:7717): Inicializando proceso Instancia
+[TRACE] 23:13:22:250 Instancia Logs/(7717:7717): Me conecte con el Coordinador
+[INFO] 23:13:22:251 Instancia Logs/(7717:7717): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 23:13:22:251 Instancia Logs/(7717:7717): BitArray de STORAGE creado con EXITO
+[TRACE] 23:45:23:642 Instancia Logs/(9084:9084): Inicializando proceso Instancia
+[TRACE] 23:45:23:643 Instancia Logs/(9084:9084): Me conecte con el Coordinador
+[INFO] 23:45:23:643 Instancia Logs/(9084:9084): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 23:45:23:644 Instancia Logs/(9084:9084): BitArray de STORAGE creado con EXITO
+[TRACE] 23:52:58:193 Instancia Logs/(9379:9379): Inicializando proceso Instancia
+[TRACE] 23:52:58:193 Instancia Logs/(9379:9379): Me conecte con el Coordinador
+[INFO] 23:52:58:194 Instancia Logs/(9379:9379): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 23:52:58:194 Instancia Logs/(9379:9379): BitArray de STORAGE creado con EXITO
+[TRACE] 23:55:12:462 Instancia Logs/(9500:9500): Inicializando proceso Instancia
+[TRACE] 23:55:12:463 Instancia Logs/(9500:9500): Me conecte con el Coordinador
+[INFO] 23:55:12:463 Instancia Logs/(9500:9500): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 23:55:12:463 Instancia Logs/(9500:9500): BitArray de STORAGE creado con EXITO
+[TRACE] 23:57:32:851 Instancia Logs/(9585:9585): Inicializando proceso Instancia
+[TRACE] 23:57:32:852 Instancia Logs/(9585:9585): Me conecte con el Coordinador
+[INFO] 23:57:32:852 Instancia Logs/(9585:9585): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 23:57:32:852 Instancia Logs/(9585:9585): BitArray de STORAGE creado con EXITO
+[TRACE] 23:59:26:959 Instancia Logs/(9665:9665): Inicializando proceso Instancia
+[TRACE] 23:59:26:960 Instancia Logs/(9665:9665): Me conecte con el Coordinador
+[INFO] 23:59:26:961 Instancia Logs/(9665:9665): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 23:59:26:961 Instancia Logs/(9665:9665): BitArray de STORAGE creado con EXITO
+[INFO] 23:59:28:760 Instancia Logs/(9665:9665): Cantidad de entradas a escribir por Lionel Messi = 3 
+
+[INFO] 23:59:28:760 Instancia Logs/(9665:9665): Escribo en TABLA DE ENTRADAS.
+[INFO] 23:59:28:760 Instancia Logs/(9665:9665): Clave = futbol:jugador:messi
+[INFO] 23:59:28:760 Instancia Logs/(9665:9665): Nro de Entrada = 0
+[INFO] 23:59:28:760 Instancia Logs/(9665:9665): Tamaño valor = 12
+[INFO] 23:59:28:760 Instancia Logs/(9665:9665): Escribo en STORAGE.
+[INFO] 23:59:28:760 Instancia Logs/(9665:9665): Valor o porcion de valor = Lion. 
+
+[INFO] 23:59:28:760 Instancia Logs/(9665:9665): Escribo en STORAGE.
+[INFO] 23:59:28:760 Instancia Logs/(9665:9665): Valor o porcion de valor = el M. 
+
+[INFO] 23:59:28:760 Instancia Logs/(9665:9665): Escribo en STORAGE.
+[INFO] 23:59:28:760 Instancia Logs/(9665:9665): Valor o porcion de valor = essi. 
+
+[TRACE] 00:29:07:982 Instancia Logs/(10569:10569): Inicializando proceso Instancia
+[TRACE] 00:29:07:983 Instancia Logs/(10569:10569): Me conecte con el Coordinador
+[INFO] 00:29:07:983 Instancia Logs/(10569:10569): BitArray de TABLA DE ENTRADAS creado con EXITO
+[INFO] 00:29:07:984 Instancia Logs/(10569:10569): BitArray de STORAGE creado con EXITO

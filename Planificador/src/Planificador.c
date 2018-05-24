@@ -2,8 +2,8 @@
 #include "Planificador.h"
 
 int main(int argc, char **argv) {
-	logger = log_create(fileLog, "Coordinador Logs", 0, 0);
-	log_trace(logger, "Inicializando proceso Planificador");
+	logger = log_create(fileLog, "Planificador Logs", 1, 0);
+	log_info(logger, "Inicializando proceso Planificador");
 
 	// Config para consola
 	chequearParametros(argc,2);
@@ -20,8 +20,7 @@ int main(int argc, char **argv) {
 	//Me conecto a Coordinador
 	socketServerCoordinador = conectarAServer(COORDINADOR_IP, PUERTO_COORDINADOR);
 	realizarHandshake(socketServerCoordinador, ES_PLANIFICADOR, ES_COORDINADOR);
-	log_trace(logger, "Planificador se conecto a Coordinador");
-	puts("Me conecte con Coordinador!");
+	log_info(logger, "Planificador se conecto a Coordinador");
 
 	//Dentro de esta funcion manejo el select con sus nuevas conexiones
 	manejarSelect();

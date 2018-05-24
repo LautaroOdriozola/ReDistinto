@@ -1,1 +1,0 @@
-[TRACE] 20:26:43:216 Coordinador Logs/(29536:29536): Inicializando proceso Planificador

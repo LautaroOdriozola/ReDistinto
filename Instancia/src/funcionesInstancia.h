@@ -15,7 +15,7 @@ typedef struct _tablaDeEntrada{
 	char* clave;
 	int nroEntrada;
 	int tamanioValor;
-	bool unicaEntrada;
+	bool variasEntradas;
 } infoTablaDeEntradas;
 
 // VARIABLES ARCHIVO DE CONFIG
@@ -30,17 +30,19 @@ t_log* logger;
 int socketServerCoordinador;
 
 // VARIABLES PARA CREAR ESTRUCTURAS ADMINISTRATIVAS
-int TAMANIO_ENTRADA;
-int	CANTIDAD_ENTRADAS;
+uint32_t TAMANIO_ENTRADA;
+uint32_t CANTIDAD_ENTRADAS;
 void* tablaDeEntradas;
 t_bitarray * bitArrayTablaDeEntradas;
 void* storage;
+t_bitarray * bitArrayStorage;
 
 void cargarConfigInstancia(t_config*);
 void iniciarEstructurasAdministrativasInstancia();
-t_bitarray * crearBitArray(int);	// Creo bitArray a partir de la cantidad de entradas y la estructura
+t_bitarray * crearBitArray(uint32_t);	// Creo bitArray a partir de la cantidad de entradas y la estructura
 void escribirEnMemoria(infoTablaDeEntradas *, char*);
-int devolverPosicionLibre();
+int devolverPosicionLibreTablaDeEntradas();
+int devolverPosicionLibreStorage();
 void manejarOperacionSet();
 infoTablaDeEntradas * crearStrParaAlmacenar(char*, int, int, bool);
 int calcularCantidadDeEntradasAOcupar(char*);

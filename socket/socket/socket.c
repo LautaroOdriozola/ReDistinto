@@ -94,6 +94,15 @@ void sendDeNotificacion(int aQuien, int notificacion){
 
 //Hacer recibir int nomas
 
+uint32_t recibirUint(int socket){
+	uint32_t uintRecibido;
+	if(recv(socket, &uintRecibido, sizeof(uint32_t), 0) == -1){
+		perror("Error al recibir un uint.");
+		exit(-1);
+	}
+	return uintRecibido;
+}
+
 int recibirInt(int socket){
 	int uintRecibido;
 	if(recv(socket, &uintRecibido, sizeof(int), 0) == -1){
@@ -104,7 +113,7 @@ int recibirInt(int socket){
 }
 
 char* recibirStringModificado(int socket){ //EL TAMAÑO DEL STRING SE RECIBE ADENTRO DE ESTA FUNCION xd
-	int tamanio = recibirInt(socket);
+	uint32_t tamanio = recibirUint(socket);
 	void* string = malloc(tamanio);
 	if(recv(socket, string, tamanio, MSG_WAITALL) == -1){
 		perror("Error al recibir un string.");
@@ -117,7 +126,7 @@ char* recibirStringModificado(int socket){ //EL TAMAÑO DEL STRING SE RECIBE ADE
 }
 
 char* recibirString(int socket){ //EL TAMAÑO DEL STRING SE RECIBE ADENTRO DE ESTA FUNCION xd
-	int tamanio = recibirInt(socket);
+	uint32_t tamanio = recibirUint(socket);
 	void* string = malloc(tamanio);
 	if(recv(socket, string, tamanio, MSG_WAITALL) == -1){
 		perror("Error al recibir un string.");

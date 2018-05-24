@@ -1,10 +1,11 @@
-#include "Instancia.h"
 #include "funcionesInstancia.h"
 
 
 int main(int argc, char **argv) {
-	logger = log_create(fileLog, "Instancia Logs", 0, 0);
-	log_trace(logger, "Inicializando proceso Instancia");
+
+	char * fileLog = "Instancia Logs.txt";
+	logger = log_create(fileLog, "Instancia Logs", 1, 0);
+	log_info(logger, "Inicializando proceso Instancia");
 
 	//Config para consola
 	chequearParametros(argc,2);
@@ -17,9 +18,8 @@ int main(int argc, char **argv) {
 
 
 	socketServerCoordinador = conectarAServer(COORDINADOR_IP, PUERTO_COORDINADOR);
-	puts("Me conecte con Coordinador! \n");
 	realizarHandshake(socketServerCoordinador, ES_INSTANCIA, ES_COORDINADOR);
-	log_trace(logger,"Me conecte con el Coordinador");
+	log_info(logger,"Me conecte con el Coordinador");
 
 	iniciarEstructurasAdministrativasInstancia();		// Creo mallocs y bitArray para tablaEntradas y storage
 

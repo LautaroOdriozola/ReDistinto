@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -48,8 +49,8 @@
 
 
 // Saber si ocupa mas de una entrada el valor
-#define	VARIAS_ENTRADAS false
-#define	UNICA_ENTRADA true
+#define	VARIAS_ENTRADAS true
+#define	UNICA_ENTRADA false
 
 
 /* For setsockopt(2) */
@@ -72,6 +73,7 @@ int aceptarConexionDeCliente(int);
 int calcularSocketMaximo(int, int);
 void sendRemasterizado(int, int, int, void*);
 void sendDeNotificacion(int, int);
+uint32_t recibirUint(int);
 int recibirInt(int);
 char* recibirStringModificado(int);
 char* recibirString(int);

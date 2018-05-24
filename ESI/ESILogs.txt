@@ -1,1 +1,0 @@
-[TRACE] 20:26:34:500 ESI Logs/(29500:29500): Inicializando proceso ESI

@@ -4,8 +4,8 @@
 
 int main(int argc, char **argv){
 
-	logger = log_create(fileLog, "ESI Logs", 0, 0);
-	log_trace(logger, "Inicializando proceso ESI");
+	logger = log_create(fileLog, "ESI Logs", 1, 0);
+	log_info(logger, "Inicializando proceso ESI");
 
 	// Por ahora solo le estamos mandando el archivo de configuracion y el .esi, por eso el 3
 	// Config para consola
@@ -20,17 +20,19 @@ int main(int argc, char **argv){
 	// conexion con coordinador
 	socketServerCoordinador = conectarAServer(COORDINADOR_IP, PUERTO_COORDINADOR);
 	realizarHandshake(socketServerCoordinador, ES_ESI, ES_COORDINADOR);
-	puts("Me conecte con Coordinador!");
+	log_info(logger, "Me conecte con Coordinador!");
+
 
 	//conexion con planificador
 	socketServerPlanificador = conectarAServer(PLANIFICADOR_IP, PUERTO_PLANIFICADOR);
 	realizarHandshake(socketServerPlanificador, ES_ESI, ES_PLANIFICADOR);
-	puts("Me conecte con Planificador!");
+	log_info(logger,"Me conecte con Planificador!");
 
+/*
 	puts("Parseo un poquito!");
 	FILE * ejemploParser = abrirArchivoAParsear(argv[2]);
 	parsearArchivo(ejemploParser);
-
+*/
 	log_destroy(logger);
 	return EXIT_SUCCESS;
 }

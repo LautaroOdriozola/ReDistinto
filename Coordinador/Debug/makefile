@@ -26,14 +26,13 @@ endif
 all: Coordinador
 
 dependents:
-	-cd /home/utnso/workspace/commons/Debug && $(MAKE) all
 	-cd /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug && $(MAKE) all
 
 # Tool invocations
-Coordinador: $(OBJS) $(USER_OBJS) /home/utnso/workspace/commons/Debug/libcommons.so /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/libsocket.so
+Coordinador: $(OBJS) $(USER_OBJS) /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/libsocket.so
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	gcc -L"/home/utnso/workspace/commons/Debug" -L"/home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug" -o "Coordinador" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc -L"/home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug" -o "Coordinador" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -43,7 +42,6 @@ clean:
 	-@echo ' '
 
 .PHONY: all clean dependents
-/home/utnso/workspace/commons/Debug/libcommons.so:
 /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/libsocket.so:
 
 -include ../makefile.targets
