@@ -40,12 +40,14 @@
 #define OPERACION_GET 102
 #define OPERACION_STORE 103
 
-//Protocolo para matar un ESI
+//Protocolo para cachear errores
 #define ERROR_TAMANIO_CLAVE 104
+
 
 /*			PROTOCOLO DE ENVIO DE MENSAJES 			*/
 //		ENVIO DE INTS EN CADA TIPO DE MENSAJE
 #define	DATOS_ADMINISTRATIVOS 105		// Para Coordinador
+#define OPERACION_EXITO 106
 
 
 // Saber si ocupa mas de una entrada el valor

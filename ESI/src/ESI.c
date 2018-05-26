@@ -28,6 +28,9 @@ int main(int argc, char **argv){
 	realizarHandshake(socketServerPlanificador, ES_ESI, ES_PLANIFICADOR);
 	log_info(logger,"Me conecte con Planificador!");
 
+	//@ PARA TESTEAR
+	//sendDeNotificacion(socketServerCoordinador, OPERACION_SET);
+
 /*
 	puts("Parseo un poquito!");
 	FILE * ejemploParser = abrirArchivoAParsear(argv[2]);

@@ -115,6 +115,8 @@ void iniciarEstructurasAdministrativasInstancia(){
 	log_info(logger, "BitArray de STORAGE creado con EXITO");
 
 	puts("*************************************************");
+
+	log_info("ESPERANDO PARA HACER ALGUNA OPERACION! :D");
 }
 
 //Creo bit array. Escribo var global = bitArrayTablaDeEntradas
@@ -184,7 +186,7 @@ void escribirEnMemoria(infoTablaDeEntradas * datosTablaDeEntrada, char* valor){
 
 
 int devolverPosicionLibreTablaDeEntradas(){
-  int largoBitArray = bitarray_get_max_bit(bitArrayTablaDeEntradas);
+  int largoBitArray = CANTIDAD_ENTRADAS;
   int posicion = 0;
 
   while(posicion < largoBitArray){
@@ -207,7 +209,7 @@ int devolverPosicionLibreTablaDeEntradas(){
 }
 
 int devolverPosicionLibreStorage(){
-	int largoBitArray = bitarray_get_max_bit(bitArrayStorage);
+	int largoBitArray = CANTIDAD_ENTRADAS;
 	int posicion = 0;
 
 	while(posicion < largoBitArray){
@@ -262,7 +264,7 @@ void manejarOperacionSet(){
 	}
 
 	escribirEnMemoria(infoParaAlmacenar, valor);
-	//free(infoParaAlmacenar);		SE HACE ESTO? SI ESTOY GUARDANDO EN MI MALLOC UN PUNTERO...!?!?!
+	free(infoParaAlmacenar);
 
 	/*
 	 *
@@ -270,6 +272,8 @@ void manejarOperacionSet(){
 	 *
 	 *
 	 */
+
+	//sendDeNotificacion(socket, OPERACION_EXITO);
 
 }
 
@@ -284,6 +288,45 @@ infoTablaDeEntradas * crearStrParaAlmacenar(char* clave, int largoValor, int pos
 	info->variasEntradas = variasEntradas;
 
 	return info;
+}
+
+//Paso como parametro una clave y me devuelve la estructura de esa clave
+infoTablaDeEntradas * getInfoTabla(char* claveABuscar){
+	  int largoBitArray = CANTIDAD_ENTRADAS;
+
+	  int posicion;
+	  infoTablaDeEntradas * datos;
+
+	  // Recorro todo el bitArray
+	  for(posicion = 0; posicion < largoBitArray; posicion++){
+
+		  // Si la posicion esta escrita, saco la info de esa posicion.
+		  if(bitarray_test_bit(bitArrayTablaDeEntradas,posicion)){
+
+			  // Encuentro la estructura de la posicion escrita.
+			  datos = (infoTablaDeEntradas*) (tablaDeEntradas + posicion * sizeof(infoTablaDeEntradas));
+
+			  //Comparo las claves para saber si necesito esta estructura o no.
+			  if(strcmp(datos->clave,claveABuscar)==0){		// Comparo strings. Si da 0 es porque son iguales
+				  break;
+			  }
+
+		  } else {
+			  log_info(logger, "No encontre la clave en esa posicion. SIGO BUSCANDO!");
+		  }
+	  }
+
+	//Cargo una lista vacia y la devuelvo
+	if(posicion > largoBitArray){
+		log_info(logger,"No existe la clave buscada.");
+		datos->clave = "";
+		datos->nroEntrada = 0;
+		datos->tamanioValor = 0;
+		datos->variasEntradas = false;
+		return datos;
+	} else {
+		return datos;
+	}
 }
 
 int calcularCantidadDeEntradasAOcupar(char* palabra){

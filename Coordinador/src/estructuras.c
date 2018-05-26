@@ -150,6 +150,13 @@ void manejarOperacionGet(int socket){
 
 	sendRemasterizado(socketPlanificador,OPERACION_GET,tamanio,claveBloqueada);
 	free(claveBloqueada);
+
+
+	/*
+	 *
+	 * FALTA RESPUESTA PLANIFICADOR
+	 *
+	 */
 }
 
 void manejarOperacionSet(int socket){
@@ -188,6 +195,7 @@ void manejarOperacionSet(int socket){
 	 * FALTA RESPUESTA DE INSTANCIA
 	 *
 	 */
+	// int resultadoOperacionSet = recvDeNotificacion(socket);
 }
 
 int retornarInstancia(){

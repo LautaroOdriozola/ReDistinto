@@ -45,6 +45,7 @@ int devolverPosicionLibreTablaDeEntradas();
 int devolverPosicionLibreStorage();
 void manejarOperacionSet();
 infoTablaDeEntradas * crearStrParaAlmacenar(char*, int, int, bool);
+infoTablaDeEntradas * getInfoTabla(char* claveABuscar);
 int calcularCantidadDeEntradasAOcupar(char*);
 void liberarMemoriaInstancia();
 
