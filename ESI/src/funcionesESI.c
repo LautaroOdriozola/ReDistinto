@@ -100,3 +100,95 @@ void cargarConfigESI(t_config* configuracion){
 	config_destroy(configuracion);
 
 }
+
+/*
+int tamanio = 0;
+void * claveBloqueada = malloc(string_length(claveNueva) + sizeof(uint32_t));
+int tamanioClave = string_length(claveNueva);
+memcpy(claveBloqueada + tamanio, &tamanioClave , sizeof(uint32_t));
+tamanio += sizeof(uint32_t);
+memcpy(claveBloqueada + tamanio, claveNueva, string_length(claveNueva));
+tamanio += string_length(claveNueva);
+
+sendRemasterizado(socketPlanificador,OPERACION_GET,tamanio,claveBloqueada);
+free(claveBloqueada);
+*/
+
+void manejarOperacionDeParseo(){
+
+    char * line = NULL;
+    size_t len = 0;
+    ssize_t read;
+
+    read = getline(&line, &len,archivoAParsear);
+    t_esi_operacion parsed = parse(line);
+
+    if(parsed.valido){
+        switch(parsed.keyword){
+            case GET:
+            	log_info(logger, "Realizo operacion GET");
+            	log_info(logger,"GET\tclave: <%s>\n", parsed.argumentos.GET.clave);
+
+            	char * clave = string_new();
+            	string_append(&clave,parsed.argumentos.GET.clave);
+
+            	//Serializo la clave a enviar.
+            	int tamanio = 0;
+            	void * claveBloqueada = malloc(string_length(clave) + sizeof(uint32_t));
+            	int tamanioClave = string_length(clave);
+            	memcpy(claveBloqueada + tamanio, &tamanioClave, sizeof(uint32_t));
+            	tamanio += sizeof(uint32_t);
+            	memcpy(claveBloqueada + tamanio, clave, string_length(clave));
+            	tamanio += string_length(clave);
+
+            	sendRemasterizado(socketServerCoordinador, OPERACION_GET,tamanio,claveBloqueada);
+            	log_info(logger,"Envio clave de la operacion GET a COORDINADOR");
+            	free(claveBloqueada);
+
+            	int respuesta = recvDeNotificacion(socketServerCoordinador);
+            	log_info(logger,"Recibo respuesta por parte del COORDINADOR de la operacion GET");
+
+            	sendDeNotificacion(socketServerPlanificador, respuesta);
+            	log_info(logger,"Envio respuesta de la operacion GET a PLANIFICADOR");
+
+
+
+                break;
+            case SET:
+            	log_info(logger, "Realizo operacion SET");
+                log_info(logger,"SET\tclave: <%s>\tvalor: <%s>\n", parsed.argumentos.SET.clave, parsed.argumentos.SET.valor);
+                break;
+            case STORE:
+            	log_info(logger, "Realizo operacion STORE");
+            	log_info(logger,"STORE\tclave: <%s>\n", parsed.argumentos.STORE.clave);
+                break;
+            default:
+                log_error(logger, "No pude interpretar <%s>\n", line);
+                exit(EXIT_FAILURE);
+        }
+
+        destruir_operacion(parsed);
+    } else {
+        fprintf(stderr, "La linea <%s> no es valida\n", line);
+        exit(EXIT_FAILURE);
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

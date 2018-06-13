@@ -149,9 +149,10 @@ void atenderNotificacion(int socket){
 			break;
 
 		case ES_ESI:
-			printf("Se ha conectado un ESI\n");
 			log_info(logger,"Se ha conectado un ESI");
 			sendDeNotificacion(socket, ES_PLANIFICADOR);
+			int ID_ESI = recibirInt(socket);		// Recibo el ID del ESI conectado.
+			log_info(logger, "Se conecto el ESI nro: %d", ID_ESI);
 			break;
 
 		case ES_INSTANCIA:

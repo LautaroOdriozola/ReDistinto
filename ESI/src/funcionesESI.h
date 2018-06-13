@@ -18,6 +18,9 @@ int PUERTO_COORDINADOR;
 char* PLANIFICADOR_IP;
 int PUERTO_PLANIFICADOR;
 
+int ID_ESI;
+FILE* archivoAParsear;
+
 t_log* logger;
 
 FILE * abrirArchivoAParsear(char *);

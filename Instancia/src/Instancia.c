@@ -31,8 +31,8 @@ int main(int argc, char **argv) {
 		switch(nroOperacion){
 
 			case OPERACION_GET:
-				puts("No puedo hacer ningun GET!");
-				puts("Comienzo a morir lentamente...");
+				log_info(logger,"No puedo hacer ningun GET!");
+				log_info(logger,"Comienzo a morir lentamente...");
 				liberarMemoriaInstancia();
 				break;
 
@@ -44,14 +44,14 @@ int main(int argc, char **argv) {
 				break;
 
 			case 0:
-				puts("Murio el coordinador");
-				puts("Comienzo a morir lentamente...");
+				log_info(logger,"Murio el COORDINADOR");
+				log_info(logger,"Comienzo a morir lentamente...");
 				liberarMemoriaInstancia();
 				break;
 
 			default:
-				puts("No se puede realizar ninguna operacion.");
-				puts("Comienzo a morir lentamente...");
+				log_info(logger,"No se puede realizar ninguna operacion.");
+				log_info(logger,"Comienzo a morir lentamente...");
 				liberarMemoriaInstancia();
 
 		} 	// Cierro switch
