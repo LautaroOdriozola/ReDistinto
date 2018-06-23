@@ -3,9 +3,15 @@
 
 int main(int argc, char **argv) {
 
+	// export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/
+	// ARGUMENTOS:
+	// ./Instancia instancia.ini
+
 	char * fileLog = "Instancia Logs.txt";
-	logger = log_create(fileLog, "Instancia Logs", 1, 0);
+	logger = log_create(fileLog, "Instancia", 1, 0);
 	log_info(logger, "Inicializando proceso Instancia");
+
+
 
 	//Config para consola
 	chequearParametros(argc,2);
@@ -41,6 +47,7 @@ int main(int argc, char **argv) {
 				break;
 
 			case OPERACION_STORE:
+				manejarOperacionStore();
 				break;
 
 			case 0:

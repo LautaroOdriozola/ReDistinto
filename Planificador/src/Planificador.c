@@ -1,8 +1,12 @@
 #include "funcionesPlanificador.h"
-#include "Planificador.h"
 
 int main(int argc, char **argv) {
-	logger = log_create(fileLog, "Planificador Logs", 1, 0);
+	// export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/
+	// ARGUMENTOS:
+	// ./Planificador planificador.ini
+
+	char* fileLog = "PlanificadorLogs.txt";
+	logger = log_create(fileLog, "Planificador", 1, 0);
 	log_info(logger, "Inicializando proceso Planificador");
 
 	// Config para consola
@@ -14,6 +18,8 @@ int main(int argc, char **argv) {
 
 	cargarConfigPlanificador(configuracionPlanificador);
 
+	iniciarEstructurasAdministrativasPlanificador();
+
 	//Crear hilo para la consola con funcion::
 	//levantarConsolaPlanificador();
 
@@ -22,10 +28,13 @@ int main(int argc, char **argv) {
 	realizarHandshake(socketServerCoordinador, ES_PLANIFICADOR, ES_COORDINADOR);
 	log_info(logger, "Planificador se conecto a Coordinador");
 
-	//Dentro de esta funcion manejo el select con sus nuevas conexiones
-	manejarSelect();
+	// Genero servidor para los ESI
+	log_trace(logger, "Estoy a la espera de conexiones");
+	// Genero el socket servidor
+	socketListener = iniciarServidor(PUERTO_ESCUCHA);
 
-	log_destroy(logger);
+	manejarConexiones();
 
+	liberarMemoriaPlanificador();
 	return EXIT_SUCCESS;
 }

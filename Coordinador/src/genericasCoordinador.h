@@ -19,21 +19,8 @@ int socketPlanificador;
 
 // VARIABLES PARA ESTRUCTURAS ADMINISTRATIVAS
 t_list * instanciasConectadas;	// para manejar las instancias para los algoritmos
-/*
- * UN SEMAFORO PARA LAS INSTANCIAS CONECTADAS
- * MUTEX
- */
-
-t_list * ESIsconectados;
-
-t_list * clavesBloqueadas;	// para saber claves bloqueadas
-/*
- * UN SEMAFORO PARA LAS CLAVES BLOQUEADAS
- * MUTEX
- *
- */
-
-t_list * operaciones; // lista para log de operaciones
+t_list * ESIsConectados;	// para manejar los ESIS
+t_log* operaciones; // log de operaciones
 
 // VARIABLES PARA ARCHIVO DE CONFIGURACION
 int PUERTO_ESCUCHA;

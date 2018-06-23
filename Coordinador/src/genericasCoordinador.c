@@ -70,17 +70,19 @@ void cargarConfigCoordinador(t_config* configuracion){
 
 
 void iniciarEstructurasAdministrativasCoordinador(){
+	log_info(logger, "GENERANDO ESTRUCTURAS ADMINISTRATIVAS");
 	instanciasConectadas = list_create();
-	ESIsconectados = list_create();
-	clavesBloqueadas = list_create();
-	operaciones = list_create();
+	ESIsConectados = list_create();
+	char* file = "OPERACIONES_COORDINADOR.txt";
+	operaciones = log_create(file, "OPERACIONES", 0, 0);	// log de operaciones
+	log_info(operaciones, "CREO LOG DE OPERACIONES");
 
 }
 
 void liberarMemoriaCoordinador(){
-	list_destroy(instanciasConectadas);
-	list_destroy(ESIsconectados);
-	list_destroy(clavesBloqueadas);
-	list_destroy(operaciones);
+	list_destroy_and_destroy_elements(instanciasConectadas,free);
+	list_destroy_and_destroy_elements(ESIsConectados,free);
+	log_destroy(operaciones);
 	log_destroy(logger);
+	exit(-1);
 }

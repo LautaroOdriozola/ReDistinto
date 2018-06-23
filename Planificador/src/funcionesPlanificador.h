@@ -10,6 +10,13 @@
 #include <commons/collections/queue.h>
 #include <commons/collections/dictionary.h>
 
+typedef struct _ESI{
+    int ID_ESI;
+    int socketESI;
+    int rafaga;
+    int estimacion;
+} infoESI;
+
 
 // VARIABLES PARA ARCHIVO DE CONFIG
 int PUERTO_ESCUCHA;
@@ -22,14 +29,22 @@ char ** CLAVES_BLOQUEADAS;
 t_log* logger;
 int socketServerCoordinador;	// PARA USUARIO
 int socketListener,socketMaximo;	 // PARA SERVER
-fd_set socketClientes, socketClientesAuxiliares; // PARA SERVER
+
+t_list * listaListos;
+t_list * listaEjecucion;
+t_list * listaTerminados;
+t_list * listaBloqueados;
+t_list * listaClavesBloqueadas;
 
 
 
 void levantarConsolaPlanificador();
 void cargarConfigPlanificador(t_config*);
-void atenderConexion(int);
-void atenderNotificacion(int);
-void manejarSelect();
+void * atenderNotificacion(void*);
+void manejarConexiones();
+void chequeoSocket(int);
+void iniciarEstructurasAdministrativasPlanificador();
+void liberarMemoriaPlanificador();
+
 
 #endif /* FUNCIONESPLANIFICADOR_H_ */

@@ -1,9 +1,13 @@
-#include "Coordinador.h"
 #include "estructuras.h"
 
 int main(int argc, char **argv){
 
-	logger = log_create(fileLog, "Coordinador Logs", 1, 0);
+	// export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/
+	// ARGUMENTOS:
+	// ./Coordinador coordinador.ini
+
+	char* fileLog = "CoordinadorLogs.txt";
+	logger = log_create(fileLog, "Coordinador", 1, 0);
 	log_info(logger, "Inicializando proceso Coordinador");
 
 	// Config para consola
@@ -15,11 +19,11 @@ int main(int argc, char **argv){
 
 	cargarConfigCoordinador(configuracionCoordinador);
 
-	log_info(logger, "Estoy a la espera de conexiones");
+	iniciarEstructurasAdministrativasCoordinador();
+
+	log_trace(logger, "Estoy a la espera de conexiones");
 	// Genero el socket servidor
 	socketListener = iniciarServidor(PUERTO_ESCUCHA);
-
-	iniciarEstructurasAdministrativasCoordinador();
 
 	//Acepto conexiones y manejo sus respuestas
 	manejadorDeHilos();

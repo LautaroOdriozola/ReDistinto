@@ -116,7 +116,7 @@ void iniciarEstructurasAdministrativasInstancia(){
 
 	puts("*************************************************");
 
-	log_info("ESPERANDO PARA HACER ALGUNA OPERACION! :D");
+	log_info(logger, "ESPERANDO PARA HACER ALGUNA OPERACION! :D");
 }
 
 //Creo bit array. Escribo var global = bitArrayTablaDeEntradas
@@ -136,11 +136,16 @@ t_bitarray * crearBitArray(uint32_t cantBloques){
 		bitarray_clean_bit(bitarray, cont);
 	}
 
-	//log_info(logger,"BIT ARRAY CREADO CON EXITO");
+	free(bits);
 	return bitarray;
 }
 
 void escribirEnMemoria(infoTablaDeEntradas * datosTablaDeEntrada, char* valor){
+
+	if(strcmp(datosTablaDeEntrada->clave,"")==0){
+			log_warning(logger,"No escribo nada ya que no hay informacion");
+
+	} else {
 
 	int posicionLibreTablaDeEntradas = devolverPosicionLibreTablaDeEntradas();
 	int posicionLibreStorage = datosTablaDeEntrada->nroEntrada;
@@ -151,8 +156,8 @@ void escribirEnMemoria(infoTablaDeEntradas * datosTablaDeEntrada, char* valor){
 	char* valorAux = string_new();
 
 
-	log_info(logger, "Escribo en TABLA DE ENTRADAS.");
-	log_info(logger, "Clave = %s \t Nro de Entrada = %d  \t  Tamaño valor = %d", datosTablaDeEntrada->clave, datosTablaDeEntrada->nroEntrada, datosTablaDeEntrada->tamanioValor);
+	log_debug(logger, "Escribo en TABLA DE ENTRADAS.");
+	log_trace(logger, "Clave = %s \t Nro de Entrada = %d  \t  Tamaño valor = %d", datosTablaDeEntrada->clave, datosTablaDeEntrada->nroEntrada, datosTablaDeEntrada->tamanioValor);
 
 
 	//Escribo en mi tabla de entradas
@@ -161,26 +166,36 @@ void escribirEnMemoria(infoTablaDeEntradas * datosTablaDeEntrada, char* valor){
 	// Seteo en el bitArray de T.D.E para decir que esa posicion esta escrita con info.
 	bitarray_set_bit(bitArrayTablaDeEntradas, posicionLibreTablaDeEntradas);
 
-
+	infoPosicion *datos;
 	//Bucle para escribir las entradas necesarias.
 
 	for(i=0; i < posicionesStorageAOcupar; i++){
 		valorAux = string_substring(valor,inicioValor,TAMANIO_ENTRADA);
 
-		log_info(logger,"Escribo en STORAGE.");
+		infoPosicion * datosValor = crearStrValor(valorAux);
+
+		log_debug(logger,"Escribo en STORAGE.");
 		log_info(logger, "Valor o porcion de valor = %s", valorAux);
 
 		//Escribo en el storage el valor
-		memcpy(storage + posicionLibreStorage * string_length(valorAux) , valorAux, string_length(valorAux));
+		memcpy(storage + posicionLibreStorage * sizeof(infoPosicion) , datosValor, sizeof(infoPosicion));
 
+		//Para ver que carajo guardo
+		datos = (infoPosicion*) (storage + posicionLibreStorage * sizeof(infoPosicion));
+		log_info(logger, "ESTOY GUARDANDO ESTO: %s", datos->porcionDeValor);
+
+
+		log_info(logger, "POSICION LIBRE STORAGE A SETEAR = %d", posicionLibreStorage);
 		// Seteo la posicion actual.
 		bitarray_set_bit(bitArrayStorage, posicionLibreStorage);
 
+
+
 		inicioValor += TAMANIO_ENTRADA;
-		posicionLibreStorage += TAMANIO_ENTRADA;
+		posicionLibreStorage++;
 
+		}
 	}
-
 
 }
 
@@ -238,17 +253,27 @@ int devolverPosicionLibreStorage(){
 
 
 void manejarOperacionSet(){
+
+	log_trace(logger, "REALIZANDO OPERACION SET!");
+
+	/*@ PARA TESTEAR
+
 	char * clave = string_new();
 	char * valor = string_new();
 
-	//@ PARA TESTEAR
-	//string_append(&clave,"futbol");
-	//string_append(&valor,"12341234123412341");
+	string_append(&clave,"futbol");
+	string_append(&valor,"12341234123412341");*/
 
 
-	clave = recibirString(socketServerCoordinador);
-	valor = recibirString(socketServerCoordinador);
+	char* clave = recibirString(socketServerCoordinador);
+	log_info(logger, "Recibo clave %s por parte del COORDINADOR", clave);
+	char* valor = recibirString(socketServerCoordinador);
+	log_info(logger, "Recibo valor %s por parte del COORDINADOR", valor);
 
+	if(strcmp(clave,"")==0){
+		log_warning(logger,"No escribo nada ya que no hay informacion");
+		//notificacion = FRACASO; 		// Esto sirve para replicarle al coordinador que no pude hacer el set de una clave vacia
+	} else {
 
 	int cantidadDeEntradas = calcularCantidadDeEntradasAOcupar(valor);
 
@@ -266,16 +291,84 @@ void manejarOperacionSet(){
 	escribirEnMemoria(infoParaAlmacenar, valor);
 	free(infoParaAlmacenar);
 
-	/*
-	 *
-	 * FALTA CONFIRMARLE AL COORDINADOR QUE TUVE EXITO!
-	 *
-	 *
-	 */
-
-	//sendDeNotificacion(socket, OPERACION_EXITO);
+	sendDeNotificacion(socketServerCoordinador, OPERACION_EXITO);
+	}
 
 }
+
+void manejarOperacionStore(){
+
+	log_info(logger, "REALIZANDO OPERACION STORE!");
+
+	char * clave = recibirString(socketServerCoordinador);
+	log_info(logger, "Recibo clave %s por parte del COORDINADOR", clave);
+
+	persistirClave(clave);
+
+	//Respuesta al coordinador
+	//sendDeNotificacion(socketServerCoordinador,OPERACION_EXITO);
+
+}
+
+void realizarDump(){
+	  int largoBitArray = CANTIDAD_ENTRADAS;
+
+	  int posicion;
+	  infoTablaDeEntradas * datos;
+
+	  log_trace(logger,"REALIZANDO FUNCION DUMP!");
+
+	  // Recorro todo el bitArray
+	  for(posicion = 0; posicion < largoBitArray; posicion++){
+
+		  // Si la posicion esta escrita, saco la info de esa posicion.
+		  if(bitarray_test_bit(bitArrayTablaDeEntradas,posicion)){
+
+			  // Encuentro la estructura de la posicion escrita.
+			  datos = (infoTablaDeEntradas*) (tablaDeEntradas + posicion * sizeof(infoTablaDeEntradas));
+
+			  log_debug(logger,"CLAVE = %s\t NRO DE ENTRADA = %d\t TAMANIO VALOR = %d", datos->clave, datos->nroEntrada, datos->tamanioValor);
+
+			  persistirClave(datos->clave);
+		  }
+	  }
+}
+
+void persistirClave(char* clave){
+
+	//Busco estructura de la clave en tabla de entradas.
+	infoTablaDeEntradas * info = getInfoTabla(clave);
+
+	//Replico estructura para encontrar la clave.
+	char* valorAPersistir = getValor(info);
+
+
+	// Creo un string para darle nombre al archivo y hacerlo .txt
+	char * nombreArchivo = string_duplicate(clave);
+	string_append(&nombreArchivo, ".txt");
+
+	// Hago copia del path de montaje para guardar ahi el archivo
+	char* pathRelativo = string_duplicate(PATH_MONTAJE);
+	log_info(logger, "Guardando archivo %s en el PATH ABSOLUTO = %s", nombreArchivo, pathRelativo);
+	string_append(&pathRelativo, nombreArchivo);
+
+	log_info(logger, "Persistiendo...\tCLAVE = %s\tVALOR = %s!", clave, valorAPersistir);
+
+	FILE* fichero = txt_open_for_append(pathRelativo);
+
+	if(fichero == NULL){
+		log_error(logger, "No se pudo crear archivo de nombre %s", nombreArchivo);
+	}
+
+	//Escribo el valor en el fichero creado.
+	txt_write_in_file(fichero, valorAPersistir);
+	//Cierro fichero
+	txt_close_file(fichero);
+
+}
+
+
+
 
 infoTablaDeEntradas * crearStrParaAlmacenar(char* clave, int largoValor, int posicionEntrada, bool variasEntradas){
 
@@ -329,6 +422,48 @@ infoTablaDeEntradas * getInfoTabla(char* claveABuscar){
 	}
 }
 
+//Paso info de TABLA DE ENTRADAS y me devuelve el valor almacenado en STORAGE.
+char * getValor(infoTablaDeEntradas * info){
+
+	int i;
+	int posicion = info->nroEntrada;
+	int largoCadena = info->tamanioValor;
+	int nroEntradas = calcularCantidadPorNumero(largoCadena);
+
+	infoPosicion * datos;
+	char * valorAux = string_new();
+
+	log_info(logger, "Armando el valor...\n");
+
+	for(i=0;i<nroEntradas;i++){
+
+		//TODO: fijarse si es negado o no.
+		if(bitarray_test_bit(bitArrayStorage,posicion)){
+			//Saco datos de la posicion
+			datos = (infoPosicion*) (storage + posicion * sizeof(infoPosicion));
+
+			log_info(logger,"Porcion de valor hallado = %s.  \n", datos->porcionDeValor);
+
+			string_append(&valorAux, datos->porcionDeValor);
+
+			posicion++;
+
+		}
+	}
+
+
+	log_info(logger,"Valor hallado = %s.  \n", valorAux);
+
+	//Catcheo error
+	if(string_length(valorAux) == 0){
+		return "";
+	} else{
+		return valorAux;
+	}
+
+}
+
+// Calculo a traves de un string
 int calcularCantidadDeEntradasAOcupar(char* palabra){
 	int cantidadDeEntradas = string_length(palabra)/TAMANIO_ENTRADA;
 
@@ -339,12 +474,33 @@ int calcularCantidadDeEntradasAOcupar(char* palabra){
 	return cantidadDeEntradas;
 }
 
+//Calculo a traves del largo
+int calcularCantidadPorNumero(int largoClave){
+	int cantidadDeEntradas = largoClave/TAMANIO_ENTRADA;
+
+	if(largoClave % TAMANIO_ENTRADA > 0 ){
+		cantidadDeEntradas++;
+	}
+
+	return cantidadDeEntradas;
+}
+
+// Cargo valor o porcion de valor en una estructura para meterla en el storage
+infoPosicion * crearStrValor(char* palabra){
+
+	infoPosicion * datos = (infoPosicion*)malloc(sizeof(infoPosicion));
+
+	datos->porcionDeValor = string_new();
+	string_append(&datos->porcionDeValor, palabra);
+
+	return datos;
+}
 
 void liberarMemoriaInstancia(){
 	free(tablaDeEntradas);
 	free(storage);
 	bitarray_destroy(bitArrayTablaDeEntradas);
+	bitarray_destroy(bitArrayStorage);
 	log_destroy(logger);
 	exit(-1);
-
 }

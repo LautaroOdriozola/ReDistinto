@@ -85,8 +85,8 @@ void sendRemasterizado(int aQuien, int tipoMsj, int tamanioMsj, void* peticionDe
 	free(bufferMensaje);
 }
 
-void sendDeNotificacion(int aQuien, int notificacion){
-	if(send(aQuien, &notificacion, sizeof(int),0)==-1){
+void sendDeNotificacion(int aQuien, uint32_t notificacion){
+	if(send(aQuien, &notificacion, sizeof(uint32_t),0)==-1){
 		perror("Error al enviar notificacion.");
 		exit(-1);
 	}
@@ -138,8 +138,8 @@ char* recibirString(int socket){ //EL TAMAÑO DEL STRING SE RECIBE ADENTRO DE ES
 }
 
 int recvDeNotificacion(int deQuien){
-	int notificacion;
-	int resultadoRecv = recv(deQuien, &notificacion, sizeof(int), MSG_WAITALL);
+	uint32_t notificacion;
+	int resultadoRecv = recv(deQuien, &notificacion, sizeof(uint32_t), MSG_WAITALL);
 	if(resultadoRecv <= 0){
 		return 0;
 	}
@@ -178,7 +178,7 @@ int conectarAServer(char *ip, int puerto) { //Recibe ip y puerto, devuelve socke
 }
 
 
-void realizarHandshake(int socket, int ES_SENDER,int ES_RECV){	// le paso un socket, quien le manda y quien recibe
+void realizarHandshake(int socket, uint32_t ES_SENDER,uint32_t ES_RECV){	// le paso un socket, quien le manda y quien recibe
 	sendDeNotificacion(socket, ES_SENDER);	// le aviso quien soy
 	int notificacion = recvDeNotificacion(socket);
 	if(notificacion != ES_RECV){

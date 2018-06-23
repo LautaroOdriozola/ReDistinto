@@ -1,0 +1,181 @@
+[INFO] 10:05:40:455 Coordinador/(6134:6134): Inicializando proceso Coordinador
+[INFO] 10:05:40:455 Coordinador/(6134:6134): Estoy a la espera de conexiones
+[INFO] 10:05:47:577 Coordinador/(6134:6137): Se ha conectado un planificador
+[INFO] 10:05:51:520 Coordinador/(6134:6139): Se ha conectado un ESI
+[INFO] 10:05:51:521 Coordinador/(6134:6139): Se conecto el ESI nro: 5
+[INFO] 10:06:50:993 Coordinador/(6134:6251): Se ha conectado una instancia
+[INFO] 10:06:50:994 Coordinador/(6134:6251): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 10:08:23:839 Coordinador/(6309:6309): Inicializando proceso Coordinador
+[INFO] 10:08:23:840 Coordinador/(6309:6309): Estoy a la espera de conexiones
+[INFO] 10:08:25:808 Coordinador/(6309:6311): Se ha conectado un planificador
+[INFO] 10:08:28:8 Coordinador/(6309:6313): Se ha conectado un ESI
+[INFO] 10:08:28:9 Coordinador/(6309:6313): Se conecto el ESI nro: 5
+[INFO] 10:08:30:617 Coordinador/(6309:6315): Se ha conectado una instancia
+[INFO] 10:08:30:617 Coordinador/(6309:6315): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 10:10:03:971 Coordinador/(6373:6373): Inicializando proceso Coordinador
+[INFO] 10:10:03:972 Coordinador/(6373:6373): Estoy a la espera de conexiones
+[INFO] 10:10:05:692 Coordinador/(6373:6375): Se ha conectado un planificador
+[INFO] 10:10:07:476 Coordinador/(6373:6377): Se ha conectado una instancia
+[INFO] 10:10:07:476 Coordinador/(6373:6377): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 10:10:09:386 Coordinador/(6373:6379): Se ha conectado un ESI
+[INFO] 10:10:09:387 Coordinador/(6373:6379): Se conecto el ESI nro: 5
+[INFO] 10:12:30:111 Coordinador/(6471:6471): Inicializando proceso Coordinador
+[INFO] 10:12:30:112 Coordinador/(6471:6471): Estoy a la espera de conexiones
+[INFO] 10:12:32:389 Coordinador/(6471:6473): Se ha conectado un planificador
+[INFO] 10:12:36:80 Coordinador/(6471:6475): Se ha conectado una instancia
+[INFO] 10:12:36:80 Coordinador/(6471:6475): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 10:12:38:669 Coordinador/(6471:6477): Se ha conectado un ESI
+[INFO] 10:12:38:671 Coordinador/(6471:6477): Se conecto el ESI nro: 5
+[INFO] 19:05:43:728 Coordinador/(7667:7667): Inicializando proceso Coordinador
+[INFO] 19:05:43:774 Coordinador/(7667:7667): Estoy a la espera de conexiones
+[INFO] 19:05:44:467 Coordinador/(7667:7669): Se ha conectado un planificador
+[INFO] 19:05:45:476 Coordinador/(7667:7671): Se ha conectado una instancia
+[INFO] 19:05:45:477 Coordinador/(7667:7671): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 19:05:46:928 Coordinador/(7667:7678): Se ha conectado un ESI
+[INFO] 19:05:46:935 Coordinador/(7667:7678): Se conecto el ESI nro: 1
+[INFO] 19:14:10:433 Coordinador/(8247:8247): Inicializando proceso Coordinador
+[INFO] 19:14:10:434 Coordinador/(8247:8247): Estoy a la espera de conexiones
+[INFO] 19:14:11:1 Coordinador/(8247:8249): Se ha conectado un planificador
+[INFO] 19:14:13:187 Coordinador/(8247:8253): Se ha conectado una instancia
+[INFO] 19:14:13:188 Coordinador/(8247:8253): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 19:14:14:880 Coordinador/(8247:8256): Se ha conectado un ESI
+[INFO] 19:14:14:883 Coordinador/(8247:8256): Se conecto el ESI nro: 1
+[INFO] 19:14:14:921 Coordinador/(8247:8256): Recibo RESPUESTA de la INSTANCIA elegida.
+[INFO] 19:22:11:223 Coordinador/(8805:8805): Inicializando proceso Coordinador
+[INFO] 19:22:11:223 Coordinador/(8805:8805): Estoy a la espera de conexiones
+[INFO] 19:22:11:817 Coordinador/(8805:8807): Se ha conectado un planificador
+[INFO] 19:22:12:580 Coordinador/(8805:8809): Se ha conectado una instancia
+[INFO] 19:22:12:580 Coordinador/(8805:8809): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 19:22:13:557 Coordinador/(8805:8813): Se ha conectado un ESI
+[INFO] 19:22:13:558 Coordinador/(8805:8813): Se conecto el ESI nro: 1
+[INFO] 17:29:14:573 Coordinador/(4895:4895): Inicializando proceso Coordinador
+[INFO] 17:29:14:573 Coordinador/(4895:4895): Estoy a la espera de conexiones
+[INFO] 17:29:15:643 Coordinador/(4895:4897): Se ha conectado un planificador
+[INFO] 17:29:16:955 Coordinador/(4895:4899): Se ha conectado un ESI
+[INFO] 17:29:16:955 Coordinador/(4895:4899): Se conecto el ESI nro: 1
+[INFO] 17:29:24:681 Coordinador/(4895:4907): Se ha conectado una instancia
+[INFO] 17:29:24:681 Coordinador/(4895:4907): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 17:31:22:468 Coordinador/(4986:4986): Inicializando proceso Coordinador
+[INFO] 17:31:22:468 Coordinador/(4986:4986): Estoy a la espera de conexiones
+[INFO] 17:31:23:70 Coordinador/(4986:4988): Se ha conectado un planificador
+[INFO] 17:31:23:620 Coordinador/(4986:4990): Se ha conectado un ESI
+[INFO] 17:31:23:621 Coordinador/(4986:4990): Se conecto el ESI nro: 1
+[INFO] 17:31:35:339 Coordinador/(4986:5031): Se ha conectado una instancia
+[INFO] 17:31:35:340 Coordinador/(4986:5031): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 17:35:00:326 Coordinador/(5149:5149): Inicializando proceso Coordinador
+[INFO] 17:35:00:326 Coordinador/(5149:5149): Estoy a la espera de conexiones
+[INFO] 17:35:00:758 Coordinador/(5149:5151): Se ha conectado un planificador
+[INFO] 17:35:01:228 Coordinador/(5149:5153): Se ha conectado un ESI
+[INFO] 17:35:01:228 Coordinador/(5149:5153): Se conecto el ESI nro: 1
+[INFO] 17:35:04:604 Coordinador/(5149:5156): Se ha conectado una instancia
+[INFO] 17:35:04:604 Coordinador/(5149:5156): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 17:39:26:30 Coordinador/(5266:5266): Inicializando proceso Coordinador
+[INFO] 17:39:26:30 Coordinador/(5266:5266): Estoy a la espera de conexiones
+[INFO] 17:39:26:491 Coordinador/(5266:5268): Se ha conectado un planificador
+[INFO] 17:39:27:21 Coordinador/(5266:5270): Se ha conectado un ESI
+[INFO] 17:39:27:21 Coordinador/(5266:5270): Se conecto el ESI nro: 1
+[INFO] 17:39:29:271 Coordinador/(5266:5272): Se ha conectado una instancia
+[INFO] 17:39:29:271 Coordinador/(5266:5272): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 17:43:56:466 Coordinador/(5369:5369): Inicializando proceso Coordinador
+[INFO] 17:43:56:466 Coordinador/(5369:5369): Estoy a la espera de conexiones
+[INFO] 17:43:57:44 Coordinador/(5369:5371): Se ha conectado un planificador
+[INFO] 17:43:57:498 Coordinador/(5369:5378): Se ha conectado un ESI
+[INFO] 17:43:57:498 Coordinador/(5369:5378): Se conecto el ESI nro: 1
+[INFO] 17:44:00:832 Coordinador/(5369:5382): Se ha conectado una instancia
+[INFO] 17:44:00:832 Coordinador/(5369:5382): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 17:51:16:879 Coordinador/(5550:5550): Inicializando proceso Coordinador
+[INFO] 17:51:16:880 Coordinador/(5550:5550): Estoy a la espera de conexiones
+[INFO] 17:51:17:380 Coordinador/(5550:5552): Se ha conectado un planificador
+[INFO] 17:51:17:930 Coordinador/(5550:5554): Se ha conectado un ESI
+[INFO] 17:51:17:930 Coordinador/(5550:5554): Se conecto el ESI nro: 1
+[INFO] 17:51:19:830 Coordinador/(5550:5556): Se ha conectado una instancia
+[INFO] 17:51:19:830 Coordinador/(5550:5556): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 17:51:48:777 Coordinador/(5594:5594): Inicializando proceso Coordinador
+[INFO] 17:51:48:777 Coordinador/(5594:5594): Estoy a la espera de conexiones
+[INFO] 17:51:49:246 Coordinador/(5594:5596): Se ha conectado un planificador
+[INFO] 17:51:49:627 Coordinador/(5594:5598): Se ha conectado un ESI
+[INFO] 17:51:49:628 Coordinador/(5594:5598): Se conecto el ESI nro: 1
+[INFO] 17:51:51:976 Coordinador/(5594:5600): Se ha conectado una instancia
+[INFO] 17:51:51:976 Coordinador/(5594:5600): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 17:53:59:979 Coordinador/(5660:5660): Inicializando proceso Coordinador
+[INFO] 17:53:59:980 Coordinador/(5660:5660): Estoy a la espera de conexiones
+[INFO] 17:54:00:400 Coordinador/(5660:5662): Se ha conectado un planificador
+[INFO] 17:54:00:790 Coordinador/(5660:5664): Se ha conectado un ESI
+[INFO] 17:54:00:790 Coordinador/(5660:5664): Se conecto el ESI nro: 1
+[INFO] 17:54:02:718 Coordinador/(5660:5666): Se ha conectado una instancia
+[INFO] 17:54:02:719 Coordinador/(5660:5666): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 17:54:25:951 Coordinador/(5704:5704): Inicializando proceso Coordinador
+[INFO] 17:54:25:952 Coordinador/(5704:5704): Estoy a la espera de conexiones
+[INFO] 17:54:26:492 Coordinador/(5704:5706): Se ha conectado un planificador
+[INFO] 17:54:27:103 Coordinador/(5704:5708): Se ha conectado un ESI
+[INFO] 17:54:27:103 Coordinador/(5704:5708): Se conecto el ESI nro: 1
+[INFO] 17:54:29:137 Coordinador/(5704:5710): Se ha conectado una instancia
+[INFO] 17:54:29:138 Coordinador/(5704:5710): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 18:53:40:616 Coordinador/(6783:6783): Inicializando proceso Coordinador
+[INFO] 18:53:40:616 Coordinador/(6783:6783): Estoy a la espera de conexiones
+[INFO] 18:53:41:459 Coordinador/(6783:6785): Se ha conectado un planificador
+[INFO] 18:53:43:936 Coordinador/(6783:6787): Se ha conectado una instancia
+[INFO] 18:53:43:936 Coordinador/(6783:6787): Agrego nueva INSTANCIA a mi lista de INSTANCIAS
+[INFO] 18:53:43:936 Coordinador/(6783:6787): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 18:53:45:937 Coordinador/(6783:6789): Se ha conectado un ESI
+[INFO] 18:53:45:938 Coordinador/(6783:6789): Se conecto el ESI nro: 1
+[INFO] 18:58:44:469 Coordinador/(6950:6950): Inicializando proceso Coordinador
+[TRACE] 18:58:44:469 Coordinador/(6950:6950): Estoy a la espera de conexiones
+[INFO] 18:58:44:469 Coordinador/(6950:6950): GENERANDO ESTRUCTURAS ADMINISTRATIVAS
+[INFO] 18:58:44:862 Coordinador/(6950:6952): Se ha conectado un planificador
+[INFO] 18:58:45:362 Coordinador/(6950:6954): Se ha conectado un ESI
+[INFO] 18:58:45:363 Coordinador/(6950:6954): Se conecto el ESI nro: 1
+[INFO] 18:58:47:248 Coordinador/(6950:6956): Se ha conectado una instancia
+[INFO] 18:58:47:248 Coordinador/(6950:6956): Enlisto INSTANCIA nueva conectada
+[INFO] 18:58:47:248 Coordinador/(6950:6956): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 18:59:38:247 Coordinador/(7014:7014): Inicializando proceso Coordinador
+[TRACE] 18:59:38:248 Coordinador/(7014:7014): Estoy a la espera de conexiones
+[INFO] 18:59:38:248 Coordinador/(7014:7014): GENERANDO ESTRUCTURAS ADMINISTRATIVAS
+[INFO] 19:00:18:703 Coordinador/(7069:7069): Inicializando proceso Coordinador
+[INFO] 19:00:18:703 Coordinador/(7069:7069): GENERANDO ESTRUCTURAS ADMINISTRATIVAS
+[TRACE] 19:00:18:703 Coordinador/(7069:7069): Estoy a la espera de conexiones
+[INFO] 19:00:19:953 Coordinador/(7069:7071): Se ha conectado un planificador
+[TRACE] 19:00:21:827 Coordinador/(7069:7073): Se ha conectado un ESI
+[INFO] 19:00:21:828 Coordinador/(7069:7073): Se conecto el ESI nro: 1
+[TRACE] 19:00:24:572 Coordinador/(7069:7075): Se ha conectado una instancia
+[INFO] 19:00:24:572 Coordinador/(7069:7075): Enlisto INSTANCIA nueva conectada
+[INFO] 19:00:24:572 Coordinador/(7069:7075): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 19:11:23:266 Coordinador/(7290:7290): Inicializando proceso Coordinador
+[INFO] 19:11:23:267 Coordinador/(7290:7290): GENERANDO ESTRUCTURAS ADMINISTRATIVAS
+[TRACE] 19:11:23:267 Coordinador/(7290:7290): Estoy a la espera de conexiones
+[INFO] 19:11:23:657 Coordinador/(7290:7292): Se ha conectado un planificador
+[TRACE] 19:11:24:158 Coordinador/(7290:7294): Se ha conectado un ESI
+[INFO] 19:11:24:159 Coordinador/(7290:7294): Se conecto el ESI nro: 1
+[TRACE] 19:11:25:955 Coordinador/(7290:7296): Se ha conectado una instancia
+[INFO] 19:11:25:955 Coordinador/(7290:7296): Enlisto nueva INSTANCIA conectada
+[INFO] 19:11:25:955 Coordinador/(7290:7296): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 19:19:58:433 Coordinador/(8440:8440): Inicializando proceso Coordinador
+[INFO] 19:19:58:433 Coordinador/(8440:8440): GENERANDO ESTRUCTURAS ADMINISTRATIVAS
+[TRACE] 19:19:58:433 Coordinador/(8440:8440): Estoy a la espera de conexiones
+[INFO] 19:19:59:433 Coordinador/(8440:8442): Se ha conectado un planificador
+[TRACE] 19:20:00:344 Coordinador/(8440:8444): Se ha conectado un ESI
+[INFO] 19:20:00:344 Coordinador/(8440:8444): Se conecto el ESI nro: 4
+[TRACE] 19:20:01:454 Coordinador/(8440:8446): Se ha conectado una instancia
+[INFO] 19:20:01:454 Coordinador/(8440:8446): Enlisto nueva INSTANCIA conectada
+[INFO] 19:20:01:455 Coordinador/(8440:8446): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[INFO] 15:08:49:933 Coordinador/(5967:5967): Inicializando proceso Coordinador
+[INFO] 15:08:49:933 Coordinador/(5967:5967): GENERANDO ESTRUCTURAS ADMINISTRATIVAS
+[TRACE] 15:08:49:934 Coordinador/(5967:5967): Estoy a la espera de conexiones
+[INFO] 15:09:35:97 Coordinador/(6047:6047): Inicializando proceso Coordinador
+[INFO] 15:09:35:98 Coordinador/(6047:6047): GENERANDO ESTRUCTURAS ADMINISTRATIVAS
+[TRACE] 15:09:35:98 Coordinador/(6047:6047): Estoy a la espera de conexiones
+[INFO] 15:09:37:40 Coordinador/(6047:6049): Se ha conectado un planificador
+[TRACE] 15:09:49:653 Coordinador/(6047:6057): Se ha conectado una instancia
+[INFO] 15:09:49:654 Coordinador/(6047:6057): Enlisto nueva INSTANCIA conectada
+[INFO] 15:09:49:654 Coordinador/(6047:6057): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[TRACE] 15:09:51:650 Coordinador/(6047:6059): Se ha conectado un ESI
+[INFO] 15:09:51:651 Coordinador/(6047:6059): Se conecto el ESI nro: 1
+[INFO] 15:11:14:769 Coordinador/(6117:6117): Inicializando proceso Coordinador
+[INFO] 15:11:14:769 Coordinador/(6117:6117): GENERANDO ESTRUCTURAS ADMINISTRATIVAS
+[TRACE] 15:11:14:770 Coordinador/(6117:6117): Estoy a la espera de conexiones
+[INFO] 15:11:15:349 Coordinador/(6117:6119): Se ha conectado un planificador
+[TRACE] 15:11:16:16 Coordinador/(6117:6121): Se ha conectado una instancia
+[INFO] 15:11:16:16 Coordinador/(6117:6121): Enlisto nueva INSTANCIA conectada
+[INFO] 15:11:16:16 Coordinador/(6117:6121): Envio TAMAÑO Y CANTIDAD DE ENTRADAS
+[TRACE] 15:11:16:766 Coordinador/(6117:6123): Se ha conectado un ESI
+[INFO] 15:11:16:767 Coordinador/(6117:6123): Se conecto el ESI nro: 1

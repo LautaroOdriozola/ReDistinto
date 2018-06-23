@@ -23,9 +23,13 @@ FILE* archivoAParsear;
 
 t_log* logger;
 
+int socketServerCoordinador;
+int socketServerPlanificador;
+
 FILE * abrirArchivoAParsear(char *);
-void parsearArchivo(FILE *);
+//void parsearArchivo(FILE *);
 void cargarConfigESI(t_config*);
+void manejarOperacionDeParseo();
 
 
 #endif /* FUNCIONESESI_H_ */

@@ -7,6 +7,7 @@
 #include <commons/string.h>
 #include <commons/log.h>
 #include <commons/bitarray.h>
+#include <commons/txt.h>
 #include <commons/collections/list.h>
 #include <commons/collections/queue.h>
 #include <commons/collections/dictionary.h>
@@ -17,6 +18,10 @@ typedef struct _tablaDeEntrada{
 	int tamanioValor;
 	bool variasEntradas;
 } infoTablaDeEntradas;
+
+typedef struct _infoPosicion{
+	char* porcionDeValor;
+} infoPosicion;
 
 // VARIABLES ARCHIVO DE CONFIG
 char* COORDINADOR_IP;
@@ -43,10 +48,20 @@ t_bitarray * crearBitArray(uint32_t);	// Creo bitArray a partir de la cantidad d
 void escribirEnMemoria(infoTablaDeEntradas *, char*);
 int devolverPosicionLibreTablaDeEntradas();
 int devolverPosicionLibreStorage();
+
+//Funciones principales de operacion
 void manejarOperacionSet();
+void manejarOperacionStore();
+void realizarDump();
+
+// Funciones auxiliares
+void persistirClave(char*);
 infoTablaDeEntradas * crearStrParaAlmacenar(char*, int, int, bool);
-infoTablaDeEntradas * getInfoTabla(char* claveABuscar);
+infoTablaDeEntradas * getInfoTabla(char*);
+char * getValor(infoTablaDeEntradas *);
 int calcularCantidadDeEntradasAOcupar(char*);
+int calcularCantidadPorNumero(int);
+infoPosicion * crearStrValor(char*);
 void liberarMemoriaInstancia();
 
 

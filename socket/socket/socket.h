@@ -40,17 +40,22 @@
 #define OPERACION_GET 102
 #define OPERACION_STORE 103
 
-#define PARSEAR_LINEA 108
-
 //Protocolo para cachear errores
 #define ERROR_TAMANIO_CLAVE 104
+#define ERROR_CLAVE_NO_IDENTIFICADA 105
+#define ERROR_COMUNICACION 106
+#define ERROR_CLAVE_INACCESIBLE	 107
+#define ERROR_CLAVE_NO_BLOQUEADA 108
+#define ERROR_DE_INSTANCIA 109
 
 
 /*			PROTOCOLO DE ENVIO DE MENSAJES 			*/
 //		ENVIO DE INTS EN CADA TIPO DE MENSAJE
-#define	DATOS_ADMINISTRATIVOS 105		// Para Coordinador
-#define OPERACION_EXITO 106
-#define INFO_ESI 107
+#define	DATOS_ADMINISTRATIVOS 110		// Para Coordinador
+#define OPERACION_EXITO 111
+#define INFO_ESI 112
+#define PARSEAR_LINEA 113
+#define REVISAR_CLAVE 114
 
 
 // Saber si ocupa mas de una entrada el valor
@@ -77,14 +82,14 @@ void verificarErrorListen(int);
 int aceptarConexionDeCliente(int);
 int calcularSocketMaximo(int, int);
 void sendRemasterizado(int, int, int, void*);
-void sendDeNotificacion(int, int);
+void sendDeNotificacion(int, uint32_t);
 uint32_t recibirUint(int);
 int recibirInt(int);
 char* recibirStringModificado(int);
 char* recibirString(int);
 int recvDeNotificacion(int);
 int conectarAServer(char*, int);
-void realizarHandshake(int, int,int);
+void realizarHandshake(int, uint32_t,uint32_t);
 
 
 

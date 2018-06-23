@@ -1,4 +1,5 @@
-#include "funcionesPlanificador.h"
+//#include "funcionesPlanificador.h"
+#include "funcionesESI.h"
 
 //Consola PLANIFICADOR
 void levantarConsolaPlanificador(){
@@ -122,108 +123,95 @@ void cargarConfigPlanificador(t_config* configuracion){
 
 }
 
-void atenderConexion(int socketNuevo){
-	int socketAceptado = aceptarConexionDeCliente(socketNuevo);
-	FD_SET(socketAceptado, &socketClientes);
-	socketMaximo = calcularSocketMaximo(socketAceptado,socketMaximo);
-	log_info(logger,"Se ha recibido una nueva conexion de un ESI");
-}
 
+void* atenderNotificacion(void* paqueteSocket){
 
-void atenderNotificacion(int socket){
-
-	int nroNotificacion = recvDeNotificacion(socket);
+	int socket = *(int*)paqueteSocket;
+	uint32_t nroNotificacion = recvDeNotificacion(socket);
 
 	switch(nroNotificacion){
 
 		case ES_COORDINADOR:
 			log_warning(logger, "La conexion recibida es erronea");
-			FD_CLR(socket, &socketClientes);
 			close(socket);
 			break;
 
 		case ES_PLANIFICADOR:
 			log_warning(logger, "La conexion recibida es erronea");
-			FD_CLR(socket, &socketClientes);
 			close(socket);
 			break;
 
 		case ES_ESI:
 			log_info(logger,"Se ha conectado un ESI");
 			sendDeNotificacion(socket, ES_PLANIFICADOR);
-			int ID_ESI = recibirInt(socket);		// Recibo el ID del ESI conectado.
-			log_info(logger, "Se conecto el ESI nro: %d", ID_ESI);
+			manejarESI(socket);
 			break;
 
 		case ES_INSTANCIA:
 			log_warning(logger, "La conexion recibida es erronea");
-			FD_CLR(socket, &socketClientes);
 			close(socket);
 			break;
 
 		case 0:
 			log_warning(logger, "El socket %d corto la conexion", socket);
-			FD_CLR(socket, &socketClientes);
 			close(socket);
 			break;
 
 		default:
 			log_warning(logger, "La conexion recibida es erronea");
-			FD_CLR(socket, &socketClientes);
 			close(socket);
 			break;
 
 	}
 
+	return 0;
 }
 
-void manejarSelect(){
-	//Creo servidor para los ESI
-	socketListener = iniciarServidor(PUERTO_ESCUCHA);
-	socketMaximo = socketListener;
-
-	//Limpio estructuras
-	FD_ZERO(&socketClientes);
-	FD_ZERO(&socketClientesAuxiliares);
-	FD_SET(socketListener, &socketClientes);
-
+void manejarConexiones(){
 	int socketCliente;
-	int corte = 1;
+	pthread_t thread_id;
 
-	while(corte){
+	// Funcion principal
+	while((socketCliente = aceptarConexionDeCliente(socketListener))) { 	// hago el accept
 
-		//pthread_mutex_lock(&mutex);
-		socketClientesAuxiliares = socketClientes;
-		//pthread_mutex_unlock(&mutex);
-
-		if (select(socketMaximo + 1, &socketClientesAuxiliares, NULL, NULL,NULL) == -1) {
-			log_error(logger, "No se pudo llevar a cabo el select");
-			//liberarMemoria();
+		//Creo hilo atendedor
+		if( pthread_create( &thread_id , NULL, atenderNotificacion , (void*) &socketCliente) < 0){
+			log_error(logger,"No puedo crear mas hilos!");
 			exit(-1);
 		}
 
-		for (socketCliente = 0; socketCliente <= socketMaximo; socketCliente++) {
-
-			//pthread_mutex_lock(&mutex);
-			bool fd_isset = FD_ISSET(socketCliente, &socketClientesAuxiliares);
-
-			if (fd_isset) {
-				if (socketCliente == socketListener) {
-
-					// Nueva conexion
-					atenderConexion(socketCliente);
-
-				} else {
-
-					// Nueva notificacion
-					atenderNotificacion(socketCliente);
-
-				}
-
-			}
-			//pthread_mutex_unlock(&mutex);
-
-		}
-
+		//pthread_join();
 	}
+
+	//Chequeo que no falle el accept
+	chequeoSocket(socketCliente);
+}
+
+
+void chequeoSocket(int socket){
+	if(socket < 0){
+		log_error(logger, "Fallo accept de Coordinador");
+		perror("Fallo accept");
+		liberarMemoriaPlanificador();
+	}
+}
+
+void iniciarEstructurasAdministrativasPlanificador(){
+	log_info(logger, "GENERANDO ESTRUCTURAS ADMINISTRATIVAS!");
+	listaListos = list_create();
+	listaEjecucion = list_create();
+	listaBloqueados = list_create();
+	listaTerminados = list_create();
+	listaClavesBloqueadas = list_create();
+}
+
+
+void liberarMemoriaPlanificador(){
+	list_destroy_and_destroy_elements(listaListos,free);
+	list_destroy_and_destroy_elements(listaEjecucion,free);
+	list_destroy_and_destroy_elements(listaBloqueados,free);
+	list_destroy_and_destroy_elements(listaTerminados,free);
+	list_destroy_and_destroy_elements(listaClavesBloqueadas,free);
+	log_destroy(logger);
+	exit(-1);
 }

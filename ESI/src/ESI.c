@@ -7,7 +7,8 @@ int main(int argc, char **argv){
 	// ARGUMENTOS:
 	// ./ESI ESI.ini script.esi ID_ESI
 
-	logger = log_create(fileLog, "ESI Logs", 1, 0);
+	char* fileLog = "ESILogs.txt";
+	logger = log_create(fileLog, "ESI", 1, 0);
 	log_info(logger, "Inicializando proceso ESI");
 
 	// Por ahora solo le estamos mandando el archivo de configuracion,el .esi y el ID, por eso el 4
@@ -19,6 +20,12 @@ int main(int argc, char **argv){
 	//t_config* configuracionESI = generarTConfig("Debug/ESI.ini", 4);
 
 	cargarConfigESI(configuracionESI);
+
+	//Armo el ID_ESI
+	char* ptr;
+	ID_ESI = strtol(argv[3], &ptr, 10);
+
+	log_debug(logger, "SOY EL ESI NRO = %d", ID_ESI);
 
 	// conexion con coordinador
 	socketServerCoordinador = conectarAServer(COORDINADOR_IP, PUERTO_COORDINADOR);
@@ -33,9 +40,13 @@ int main(int argc, char **argv){
 
 	//Le mando al planificador que ESI soy.
 	log_info(logger,"Envio ID de ESI al PLANIFICADOR.");
-	ID_ESI = argv[3];
 	// Envio el nro (ID)
-	sendDeNotificacion(socket, ID_ESI);
+	sendDeNotificacion(socketServerPlanificador, (uint32_t) ID_ESI);
+
+	//Le mando al coordinador que ESI soy
+	log_info(logger,"Envio ID de ESI al COORDINADORR.");
+	sendDeNotificacion(socketServerCoordinador, (uint32_t) ID_ESI);
+
 
 
 	archivoAParsear = abrirArchivoAParsear(argv[2]);
@@ -48,13 +59,14 @@ int main(int argc, char **argv){
 
 
 			case PARSEAR_LINEA:
-				//manejarOperacionDeParseo();
+				manejarOperacionDeParseo();
 				break;
 
 			case 0:
 				log_info(logger,"Murio el PLANIFICADOR");
 				log_info(logger,"Comienzo a morir lentamente...");
 				//liberarMemoriaESI();
+				exit(-1);
 				break;
 
 			default:
