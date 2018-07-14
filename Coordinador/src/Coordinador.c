@@ -6,6 +6,8 @@ int main(int argc, char **argv){
 	// ARGUMENTOS:
 	// ./Coordinador coordinador.ini
 
+	signal(SIGINT, laParca);
+
 	char* fileLog = "CoordinadorLogs.txt";
 	logger = log_create(fileLog, "Coordinador", 1, 0);
 	log_info(logger, "Inicializando proceso Coordinador");

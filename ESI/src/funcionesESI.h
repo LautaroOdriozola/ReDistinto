@@ -20,6 +20,10 @@ int PUERTO_PLANIFICADOR;
 
 int ID_ESI;
 FILE* archivoAParsear;
+int cantidadDeInstrucciones;
+
+int INICIO_DE_INSTRUCCION;
+t_list * listaDeInstrucciones;
 
 t_log* logger;
 
@@ -27,9 +31,10 @@ int socketServerCoordinador;
 int socketServerPlanificador;
 
 FILE * abrirArchivoAParsear(char *);
-//void parsearArchivo(FILE *);
+void contarLineas(FILE * archivo);
 void cargarConfigESI(t_config*);
 void manejarOperacionDeParseo();
+void liberarMemoriaESI();
 
 
 #endif /* FUNCIONESESI_H_ */

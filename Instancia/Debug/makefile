@@ -26,7 +26,7 @@ endif
 all: Instancia
 
 dependents:
-	-cd /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug && $(MAKE) clean all
+	-cd /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug && $(MAKE) all
 
 # Tool invocations
 Instancia: $(OBJS) $(USER_OBJS) /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/libsocket.so

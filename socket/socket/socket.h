@@ -54,14 +54,21 @@
 #define	DATOS_ADMINISTRATIVOS 110		// Para Coordinador
 #define OPERACION_EXITO 111
 #define INFO_ESI 112
-#define PARSEAR_LINEA 113
-#define REVISAR_CLAVE 114
+#define OPERACION_BLOQUES_LIBRES 113
 
+#define PARSEAR_LINEA 114
+#define REVISAR_CLAVE 115
+
+#define BLOQUEAR_ESI 116
+#define ABORTAR_ESI 117
 
 // Saber si ocupa mas de una entrada el valor
 #define	VARIAS_ENTRADAS true
 #define	UNICA_ENTRADA false
 
+#define SJF_SD 1001
+#define SJF_CD 1002
+#define HRRN 1003
 
 /* For setsockopt(2) */
 #define SOL_SOCKET	1
@@ -85,7 +92,6 @@ void sendRemasterizado(int, int, int, void*);
 void sendDeNotificacion(int, uint32_t);
 uint32_t recibirUint(int);
 int recibirInt(int);
-char* recibirStringModificado(int);
 char* recibirString(int);
 int recvDeNotificacion(int);
 int conectarAServer(char*, int);

@@ -5,16 +5,22 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/Planificador.c \
+../src/algoritmosDePlanificacion.c \
+../src/funcionesConsola.c \
 ../src/funcionesESI.c \
 ../src/funcionesPlanificador.c 
 
 OBJS += \
 ./src/Planificador.o \
+./src/algoritmosDePlanificacion.o \
+./src/funcionesConsola.o \
 ./src/funcionesESI.o \
 ./src/funcionesPlanificador.o 
 
 C_DEPS += \
 ./src/Planificador.d \
+./src/algoritmosDePlanificacion.d \
+./src/funcionesConsola.d \
 ./src/funcionesESI.d \
 ./src/funcionesPlanificador.d 
 

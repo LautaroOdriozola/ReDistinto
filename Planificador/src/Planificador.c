@@ -1,9 +1,14 @@
 #include "funcionesPlanificador.h"
+#include "funcionesESI.h"
+#include "funcionesConsola.h"
+
 
 int main(int argc, char **argv) {
 	// export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/
 	// ARGUMENTOS:
 	// ./Planificador planificador.ini
+
+	signal(SIGINT, parcaDePlanificador);
 
 	char* fileLog = "PlanificadorLogs.txt";
 	logger = log_create(fileLog, "Planificador", 1, 0);
@@ -11,17 +16,14 @@ int main(int argc, char **argv) {
 
 	// Config para consola
 	chequearParametros(argc,2);
-	t_config* configuracionPlanificador= generarTConfig(argv[1], 6);
+	t_config* configuracionPlanificador= generarTConfig(argv[1], 7);
 
 	//Config para debug
-	//t_config* configuracionPlanificador = generarTConfig("Debug/planificador.ini", 6);
+	//t_config* configuracionPlanificador = generarTConfig("Debug/planificador.ini", 7);
 
 	cargarConfigPlanificador(configuracionPlanificador);
 
 	iniciarEstructurasAdministrativasPlanificador();
-
-	//Crear hilo para la consola con funcion::
-	//levantarConsolaPlanificador();
 
 	//Me conecto a Coordinador
 	socketServerCoordinador = conectarAServer(COORDINADOR_IP, PUERTO_COORDINADOR);
@@ -30,9 +32,17 @@ int main(int argc, char **argv) {
 
 	// Genero servidor para los ESI
 	log_trace(logger, "Estoy a la espera de conexiones");
-	// Genero el socket servidor
-	socketListener = iniciarServidor(PUERTO_ESCUCHA);
 
+	//Crear hilo para la consola con funcion
+	iniciarHiloConsola();
+
+	//Hilo para atender al coordinador
+	iniciarHiloQueAtiendeAlCoordinador();
+
+	//Hilo PLANIFICADOR
+	iniciarHiloQuePlanifica();
+
+	//Select para manejar los ESIS
 	manejarConexiones();
 
 	liberarMemoriaPlanificador();

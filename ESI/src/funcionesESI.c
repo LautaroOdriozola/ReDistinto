@@ -9,44 +9,51 @@ FILE * abrirArchivoAParsear(char * nombreArchivo){
 	    }
 	    return archivo;
 }
-/*
-// @modo EJEMPLO
-void parsearArchivo(FILE * archivo){
+
+void contarLineas(FILE * archivo){
     char * line = NULL;
     size_t len = 0;
     ssize_t read;
 
-    while ((read = getline(&line, &len, archivo)) != -1) {
-        t_esi_operacion parsed = parse(line);
+    printf("*************************************** \n");
+    log_debug(logger, "IMPRIMIENDO SCRIPT A EJECUTAR");
+    printf("*************************************** \n");
 
-        if(parsed.valido){
-            switch(parsed.keyword){
+    while ((read = getline(&line, &len, archivo)) != -1) {
+        t_esi_operacion * parsed = malloc(sizeof(t_esi_operacion));
+        *parsed = parse(line);
+
+        list_add(listaDeInstrucciones,parsed);
+
+        if(parsed->valido){
+            switch(parsed->keyword){
                 case GET:
-                    printf("GET\tclave: <%s>\n", parsed.argumentos.GET.clave);
+                    printf("GET\tclave: <%s>\n", parsed->argumentos.GET.clave);
                     break;
                 case SET:
-                    printf("SET\tclave: <%s>\tvalor: <%s>\n", parsed.argumentos.SET.clave, parsed.argumentos.SET.valor);
+                    printf("SET\tclave: <%s>\tvalor: <%s>\n", parsed->argumentos.SET.clave, parsed->argumentos.SET.valor);
                     break;
                 case STORE:
-                    printf("STORE\tclave: <%s>\n", parsed.argumentos.STORE.clave);
+                    printf("STORE\tclave: <%s>\n", parsed->argumentos.STORE.clave);
                     break;
                 default:
                     fprintf(stderr, "No pude interpretar <%s>\n", line);
-                    exit(EXIT_FAILURE);
+                	liberarMemoriaESI();
             }
 
-            destruir_operacion(parsed);
+            //destruir_operacion(parsed);
+
         } else {
             fprintf(stderr, "La linea <%s> no es valida\n", line);
-            exit(EXIT_FAILURE);
+        	liberarMemoriaESI();
         }
     }
 
-    fclose(archivo);
-    if (line)
+   fclose(archivo);
+  	  if (line)
         free(line);
 
-}*/
+}
 
 
 void cargarConfigESI(t_config* configuracion){
@@ -103,135 +110,192 @@ void cargarConfigESI(t_config* configuracion){
 
 void manejarOperacionDeParseo(){
 
-    char * line = NULL;
-    size_t len = 0;
-    //ssize_t read;
+	if(list_size(listaDeInstrucciones) > 0){
 
-    //read = getline(&line, &len,archivoAParsear);
-    getline(&line, &len,archivoAParsear);
-    t_esi_operacion parsed = parse(line);
+		t_esi_operacion * parsed = (t_esi_operacion *) list_get(listaDeInstrucciones,INICIO_DE_INSTRUCCION);
 
-    if(parsed.valido){
-        switch(parsed.keyword){
+	    if(parsed->valido && parsed != NULL){
 
-        	case GET:
-            	log_info(logger, "Realizo operacion GET");
-            	log_info(logger,"GET\tclave: <%s>\n", parsed.argumentos.GET.clave);
+	    	log_warning(logger,"PARSEANDO LINEA...");
+	    	sleep(1);
 
-            	char * claveGet = string_new();
-            	string_append(&claveGet,parsed.argumentos.GET.clave);
+	        switch(parsed->keyword){
 
-            	//Serializo la clave a enviar.
-            	int tamanioGet = 0;
-            	void * claveBloqueadaGet = malloc(string_length(claveGet) + sizeof(uint32_t));
-            	int tamanioClaveGet = string_length(claveGet);
-            	memcpy(claveBloqueadaGet + tamanioGet, &tamanioClaveGet, sizeof(uint32_t));
-            	tamanioGet += sizeof(uint32_t);
-            	memcpy(claveBloqueadaGet + tamanioGet, claveGet, string_length(claveGet));
-            	tamanioGet += string_length(claveGet);
+	        	case GET:
+	            	log_trace(logger, "Realizo operacion GET");
+	            	log_debug(logger,"GET\tclave: <%s>\n", parsed->argumentos.GET.clave);
 
-            	sendRemasterizado(socketServerCoordinador, OPERACION_GET,tamanioGet,claveBloqueadaGet);
-            	log_info(logger,"Envio clave de la operacion GET a COORDINADOR");
-            	free(claveBloqueadaGet);
+	            	char * claveGet = string_new();
+	            	string_append(&claveGet,parsed->argumentos.GET.clave);
 
-            	log_info(logger,"Recibo respuesta por parte del COORDINADOR de la operacion GET");
-            	int respuestaGet = recvDeNotificacion(socketServerCoordinador);
+	            	//Serializo la clave a enviar.
+	            	int tamanioGet = 0;
+	            	void * claveBloqueadaGet = malloc(string_length(claveGet) + sizeof(uint32_t));
+	            	int tamanioClaveGet = string_length(claveGet);
+	            	memcpy(claveBloqueadaGet + tamanioGet, &tamanioClaveGet, sizeof(uint32_t));
+	            	tamanioGet += sizeof(uint32_t);
+	            	memcpy(claveBloqueadaGet + tamanioGet, claveGet, string_length(claveGet));
+	            	tamanioGet += string_length(claveGet);
 
-            	// Catcheo tipo de respuestas
-            	switch(respuestaGet){
+	            	sendRemasterizado(socketServerCoordinador, OPERACION_GET,tamanioGet,claveBloqueadaGet);
+	            	log_info(logger,"Envio clave de la operacion GET a COORDINADOR");
+	            	free(claveBloqueadaGet);
 
-            		case ERROR_TAMANIO_CLAVE:
-            			//matarEsi();
-            			break;
+	            	log_info(logger,"Recibo respuesta por parte del COORDINADOR de la operacion GET");
+	            	int respuestaGet = recvDeNotificacion(socketServerCoordinador);
 
-            		case 0:
-            			break;
+	            	// Catcheo tipo de respuestas
+	            	switch(respuestaGet){
 
-            		default:
-            			break; //Si no es ningun error, sigo con el flujo normal?
+	            		case OPERACION_EXITO:
+	            			log_debug(logger, "COORDINADOR ME DIJO QUE PUDO OPERAR CORRECTAMENTE!");
+	            			break;
 
-            	}
+	            		case ERROR_TAMANIO_CLAVE:
+	            			//liberarMemoriaESI();
+	            			break;
+
+	            		case BLOQUEAR_ESI:
+	            			log_debug(logger, "COORDINADOR ME DIJO QUE ME VOY A BLOQUEAR");
+
+	            			INICIO_DE_INSTRUCCION--;
+	            			break;
+
+	            		case 0:
+	            			break;
+
+	            		default:
+	            			break; //Si no es ningun error, sigo con el flujo normal?
+
+	            	}
 
 
-            	//sendDeNotificacion(socketServerPlanificador, respuestaGet);
-            	log_info(logger,"Envio respuesta de la operacion GET a PLANIFICADOR");
-                break;
+	            	sendDeNotificacion(socketServerPlanificador, respuestaGet);
+	            	log_info(logger,"Envio respuesta de la operacion GET a PLANIFICADOR");
+	                free(claveGet);
+	            	break;
 
-            case SET:
-              	log_info(logger, "Realizo operacion SET");
-              	log_info(logger,"SET\tclave: <%s>\tvalor: <%s>\n", parsed.argumentos.SET.clave, parsed.argumentos.SET.valor);
+	            case SET:
+	              	log_trace(logger, "Realizo operacion SET");
+	              	log_debug(logger,"SET\tclave: <%s>\tvalor: <%s>\n", parsed->argumentos.SET.clave, parsed->argumentos.SET.valor);
 
-              	char* claveSet = string_new();
-              	string_append(&claveSet,parsed.argumentos.SET.clave);
-              	char* valor = string_new();
-              	string_append(&valor,parsed.argumentos.SET.valor);
+	              	char* claveSet = string_new();
+	              	string_append(&claveSet,parsed->argumentos.SET.clave);
+	              	char* valor = string_new();
+	              	string_append(&valor,parsed->argumentos.SET.valor);
 
-              	//serializacion
-              	int tamanioSet = 0;
-              	void * claveBloqueadaSet = malloc(string_length(claveSet) +  string_length(valor)+ 2* sizeof(uint32_t));
-              	int tamanioClaveSet = string_length(claveSet);
-              	int tamanioValor = string_length(valor);
-              	memcpy(claveBloqueadaSet+tamanioSet,&tamanioClaveSet, sizeof(uint32_t));
-              	tamanioSet += sizeof(uint32_t);
-              	memcpy(claveBloqueadaSet+tamanioSet,claveSet,string_length(claveSet));
-              	tamanioSet+=string_length(claveSet);
-              	memcpy(claveBloqueadaSet+tamanioSet,&tamanioValor,sizeof(uint32_t));
-              	tamanioSet+= sizeof(uint32_t);
-              	memcpy(claveBloqueadaSet+tamanioSet,valor,string_length(valor));
-              	tamanioSet += string_length(valor);
+	              	//serializacion
+	              	int tamanioSet = 0;
+	              	void * claveBloqueadaSet = malloc(string_length(claveSet) +  string_length(valor)+ 2* sizeof(uint32_t));
+	              	int tamanioClaveSet = string_length(claveSet);
+	              	int tamanioValor = string_length(valor);
+	              	memcpy(claveBloqueadaSet+tamanioSet,&tamanioClaveSet, sizeof(uint32_t));
+	              	tamanioSet += sizeof(uint32_t);
+	              	memcpy(claveBloqueadaSet+tamanioSet,claveSet,string_length(claveSet));
+	              	tamanioSet+=string_length(claveSet);
+	              	memcpy(claveBloqueadaSet+tamanioSet,&tamanioValor,sizeof(uint32_t));
+	              	tamanioSet+= sizeof(uint32_t);
+	              	memcpy(claveBloqueadaSet+tamanioSet,valor,string_length(valor));
+	              	tamanioSet += string_length(valor);
 
-              	sendRemasterizado(socketServerCoordinador,OPERACION_SET,tamanioSet,claveBloqueadaSet);
-              	log_info(logger,"Envio clave y valor de la Operacion SET al coordinador");
-              	free(claveBloqueadaSet);
+	              	sendRemasterizado(socketServerCoordinador,OPERACION_SET,tamanioSet,claveBloqueadaSet);
+	              	log_info(logger,"Envio clave y valor de la Operacion SET al coordinador");
+	              	free(claveBloqueadaSet);
 
-              	int respuestaSet = recvDeNotificacion(socketServerCoordinador);
-              	log_info(logger,"Recibo respuesta por parte del COORDINADOR de la operacion SET");
+	              	int respuestaSet = recvDeNotificacion(socketServerCoordinador);
+	              	log_info(logger,"Recibo respuesta por parte del COORDINADOR de la operacion SET");
 
-              	//sendDeNotificacion(socketServerPlanificador, respuestaSet);
-              	log_info(logger,"Envio respuesta de la operacion SET a PLANIFICADOR");
+	              	// SWITCH O IF ANIDADOS?
+	              	if(respuestaSet == ERROR_DE_INSTANCIA){
+	              		liberarMemoriaESI();
+	              	}
 
-              	break;
+	              	sendDeNotificacion(socketServerPlanificador, respuestaSet);
+	              	log_info(logger,"Envio respuesta de la operacion SET a PLANIFICADOR");
 
-            case STORE:
+	              	free(claveSet);
+	              	free(valor);
+	              	break;
 
-            	log_info(logger, "Realizo operacion STORE");
-            	log_info(logger,"STORE\tclave: <%s>\n", parsed.argumentos.STORE.clave);
-            	char* claveStore = string_new();
-            	string_append(&claveStore,parsed.argumentos.STORE.clave);
+	            case STORE:
 
-            	//serializacion
-            	int tamanio = 0;
-            	void * claveBloqueada = malloc(string_length(claveStore) + sizeof(uint32_t));
-            	int tamanioClave = string_length(claveStore);
-            	memcpy(claveBloqueada+tamanio,&tamanioClave,sizeof(uint32_t));
-            	tamanio+=sizeof(uint32_t);
-            	memcpy(claveBloqueada+tamanio,claveStore,string_length(claveStore));
-            	tamanio+=string_length(claveStore);
+	            	log_trace(logger, "Realizo operacion STORE");
+	            	log_debug(logger,"STORE\tclave: <%s>\n", parsed->argumentos.STORE.clave);
+	            	char* claveStore = string_new();
+	            	string_append(&claveStore,parsed->argumentos.STORE.clave);
 
-            	sendRemasterizado(socketServerCoordinador,OPERACION_STORE,tamanio,claveBloqueada);
-            	log_info(logger,"Envio clave de la operacion STORE al coordinador");
-            	free(claveBloqueada);
+	            	//serializacion
+	            	int tamanio = 0;
+	            	void * claveBloqueada = malloc(string_length(claveStore) + sizeof(uint32_t));
+	            	int tamanioClave = string_length(claveStore);
+	            	memcpy(claveBloqueada+tamanio,&tamanioClave,sizeof(uint32_t));
+	            	tamanio+=sizeof(uint32_t);
+	            	memcpy(claveBloqueada+tamanio,claveStore,string_length(claveStore));
+	            	tamanio+=string_length(claveStore);
 
-            	int respuesta = recvDeNotificacion(socketServerCoordinador);
-            	log_info(logger,"Recibo respuesta por parte del COORDINADOR de la operacion STORE");
+	            	sendRemasterizado(socketServerCoordinador,OPERACION_STORE,tamanio,claveBloqueada);
+	            	log_info(logger,"Envio clave de la operacion STORE al coordinador");
+	            	free(claveBloqueada);
 
-            	sendDeNotificacion(socketServerPlanificador, respuesta);
-            	log_info(logger,"Envio respuesta de la operacion STORE a PLANIFICADOR");
+	            	int respuesta = recvDeNotificacion(socketServerCoordinador);
+	            	log_info(logger,"Recibo respuesta por parte del COORDINADOR de la operacion STORE");
 
-            	break;
+	            	switch(respuesta){
+	            		case OPERACION_EXITO:
+	            			log_debug(logger, "COORDINADOR me dice que pudo realizar STORE correctamente");
+	            			sendDeNotificacion(socketServerPlanificador, respuesta);
+	            			log_info(logger,"Envio respuesta de la operacion STORE a PLANIFICADOR");
+	            			break;
 
-            default:
+	            		case ABORTAR_ESI:
+	            			log_error(logger, "COORDINADOR me dice que ABORTE");
+	            			sendDeNotificacion(socketServerPlanificador, respuesta);
+	            			log_info(logger,"Envio respuesta de la operacion STORE a PLANIFICADOR");
+	            			log_error(logger, "Muriendo lentamente...");
+	            			liberarMemoriaESI();
+	            			break;
 
-            	log_error(logger, "No pude interpretar <%s>\n", line);
-            	exit(EXIT_FAILURE);
-        	}
+	            		default:
+	            			break;
+	            	}
 
-        destruir_operacion(parsed);
+	            	free(claveStore);
+	               	break;
 
-    } else {
-        fprintf(stderr, "La linea <%s> no es valida\n", line);
-        exit(EXIT_FAILURE);
-    }
+	            default:
+
+	            	log_error(logger, "No pude interpretar");
+	            	liberarMemoriaESI();
+	        	}
+
+	        //destruir_operacion(parsed);
+
+	    } else {
+	        log_error(logger, "FINALIZANDO ESI NRO = %d", ID_ESI);
+	        liberarMemoriaESI();
+	    }
+
+	    //Para leer la siguiente instruccion guardada
+	    INICIO_DE_INSTRUCCION++;
+	}
+
+}
+
+void liberarInstrucciones(t_esi_operacion * parsed){
+	if(parsed->_raw){
+		string_iterate_lines(parsed->_raw, (void*) free);
+		free(parsed->_raw);
+	}
+	free(parsed);
+}
+
+void liberarMemoriaESI(){
+
+	list_destroy_and_destroy_elements(listaDeInstrucciones, (void*) liberarInstrucciones);
+	close(socketServerPlanificador);
+	close(socketServerCoordinador);
+	log_destroy(logger);
+	exit(-1);
 
 }
 

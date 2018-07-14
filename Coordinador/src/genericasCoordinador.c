@@ -73,15 +73,151 @@ void iniciarEstructurasAdministrativasCoordinador(){
 	log_info(logger, "GENERANDO ESTRUCTURAS ADMINISTRATIVAS");
 	instanciasConectadas = list_create();
 	ESIsConectados = list_create();
+	listaDeHilos = list_create();
+
+	pthread_mutex_init(&mutexHilos, NULL);
+	pthread_mutex_init(&instConectadas, NULL);
+	pthread_mutex_init(&EsisConectados, NULL);
+	pthread_mutex_init(&clavesTomadas, NULL);
+
+
 	char* file = "OPERACIONES_COORDINADOR.txt";
 	operaciones = log_create(file, "OPERACIONES", 0, 0);	// log de operaciones
 	log_info(operaciones, "CREO LOG DE OPERACIONES");
 
 }
 
+void loguearRespuestaGet(int id, char * claveNueva){
+	log_info(operaciones, "ESI %d -> GET \t %s", id, claveNueva);
+}
+
+void loguearRespuestaSet(int id,char* claveNueva,char* valor){
+	log_info(operaciones, "ESI %d -> SET \t %s \t %s", id, claveNueva, valor);
+}
+
+void loguearRespuestaStore(int id,char* claveNueva){
+	log_info(operaciones, "ESI %d -> STORE \t %s", id, claveNueva);
+}
+
+
+void cerrandoSocketsInstancias(){
+
+	int largo = list_size(instanciasConectadas);
+	int i;
+
+	for(i=0; i<largo ; i++){
+
+		infoAlgoritmoDistribucion * data = (infoAlgoritmoDistribucion*) list_get(instanciasConectadas, i);
+
+		close(data->socketInstancia);
+	}
+}
+
+void cerrandoSocketsESIS(){
+
+	int largo = list_size(ESIsConectados);
+	int i;
+
+	for(i=0; i<largo ; i++){
+
+		infoESI * data = (infoESI*) list_get(ESIsConectados, i);
+
+		close(data->socket);
+	}
+}
+
+void liberarClavesDeInstancias(){
+
+	int largo = list_size(instanciasConectadas);
+	int i;
+
+	for(i=0; i<largo; i++){
+
+		infoAlgoritmoDistribucion * data = (infoAlgoritmoDistribucion *) list_get(instanciasConectadas,i);
+
+		list_destroy_and_destroy_elements(data->clavesTomadas, free);
+	}
+
+}
+
+void eliminarHiloDeConexion(int socketESI){
+
+	bool encontrarSocket(infoHilos * info){
+		return info->socket == socketESI;
+	}
+
+	pthread_mutex_lock(&mutexHilos);
+	infoHilos * data = (infoHilos*) list_remove_by_condition(listaDeHilos,(void*) encontrarSocket);
+	pthread_mutex_unlock(&mutexHilos);
+
+	if(data == NULL){
+		log_error(logger, "No se encontro el hilo de conexion que atendia al socket %d", socketESI);
+	} else{
+		log_warning(logger, "Eliminando hilo con conexion en socket = %d", socketESI);
+		log_warning(logger, "Socket cerro la conexion!");
+
+		pthread_cancel(data->hiloAtendedor);
+		free(data);
+	}
+}
+
+
+
+void liberarInstancias(infoAlgoritmoDistribucion* instancia){
+	if(instancia != NULL){
+		liberarClaves(instancia->clavesTomadas);
+		free(instancia);
+	}
+}
+
+void liberarClaves(t_list * lista){
+
+	void destruirString(char* string) {
+		free(string);
+	}
+	list_destroy_and_destroy_elements(lista, (void*) destruirString);
+}
+
+void liberarESIs(infoESI* ESI){
+	if(ESI != NULL){
+		free(ESI);
+	}
+}
+
+void liberarHilo(infoHilos * data){
+	if(data != NULL){
+		close(data->socket);
+		pthread_cancel(data->hiloAtendedor);
+		free(data);
+	}
+}
+
+void laParca(int signal){
+	log_error(logger, "MURIENDO CON ELEGANCIA...");
+	log_trace(logger, "DESTRUYENDO ESTRUCTURAS ADMINISTRATIVAS");
+	list_destroy_and_destroy_elements(instanciasConectadas,(void*) liberarInstancias);
+	list_destroy_and_destroy_elements(ESIsConectados,(void*) liberarESIs);
+	list_destroy(listaDeHilos);
+	pthread_mutex_destroy(&instConectadas);
+	pthread_mutex_destroy(&EsisConectados);
+	pthread_mutex_destroy(&clavesTomadas);
+	log_warning(logger, "CERRANDO COORDINADOR");
+	log_destroy(operaciones);
+	log_destroy(logger);
+	exit(-1);
+}
+
+
 void liberarMemoriaCoordinador(){
-	list_destroy_and_destroy_elements(instanciasConectadas,free);
-	list_destroy_and_destroy_elements(ESIsConectados,free);
+	log_error(logger, "MURIENDO CON ELEGANCIA...");
+	log_trace(logger, "DESTRUYENDO ESTRUCTURAS ADMINISTRATIVAS");
+	list_destroy_and_destroy_elements(instanciasConectadas,(void*) liberarInstancias);
+	list_destroy_and_destroy_elements(ESIsConectados,(void*) liberarESIs);
+	list_destroy(listaDeHilos);
+	pthread_mutex_destroy(&instConectadas);
+	pthread_mutex_destroy(&EsisConectados);
+	pthread_mutex_destroy(&clavesTomadas);
+	log_warning(logger, "CERRANDO COORDINADOR");
 	log_destroy(operaciones);
 	log_destroy(logger);
 	exit(-1);

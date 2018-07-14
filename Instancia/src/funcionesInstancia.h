@@ -37,31 +37,50 @@ int socketServerCoordinador;
 // VARIABLES PARA CREAR ESTRUCTURAS ADMINISTRATIVAS
 uint32_t TAMANIO_ENTRADA;
 uint32_t CANTIDAD_ENTRADAS;
-void* tablaDeEntradas;
-t_bitarray * bitArrayTablaDeEntradas;
+
+t_list * tablaDeEntradas;
 void* storage;
 t_bitarray * bitArrayStorage;
+
+pthread_mutex_t mutexTablaDeEntradas;
+pthread_mutex_t mutexStorage;
+pthread_mutex_t	mutexDump;
+
+pthread_t hiloDump;
 
 void cargarConfigInstancia(t_config*);
 void iniciarEstructurasAdministrativasInstancia();
 t_bitarray * crearBitArray(uint32_t);	// Creo bitArray a partir de la cantidad de entradas y la estructura
-void escribirEnMemoria(infoTablaDeEntradas *, char*);
-int devolverPosicionLibreTablaDeEntradas();
+uint32_t escribirEnMemoria(infoTablaDeEntradas *, char*);
 int devolverPosicionLibreStorage();
 
 //Funciones principales de operacion
 void manejarOperacionSet();
 void manejarOperacionStore();
-void realizarDump();
+void manejarOperacionBloquesLibres();
+int calcularEntradasLibres();
+
+
+void actualizarClaveAndValor(char*, char*);
+void almacenarClaveAndValor(char*, char* );
+bool existeClaveEnTabla(char*);
+
+void* realizarDump();
+void funcionDump();
 
 // Funciones auxiliares
 void persistirClave(char*);
+void chequearClave(char *);
 infoTablaDeEntradas * crearStrParaAlmacenar(char*, int, int, bool);
 infoTablaDeEntradas * getInfoTabla(char*);
 char * getValor(infoTablaDeEntradas *);
 int calcularCantidadDeEntradasAOcupar(char*);
 int calcularCantidadPorNumero(int);
 infoPosicion * crearStrValor(char*);
+void borrarClaveDeTabla(infoTablaDeEntradas*);
+int encontrarPosicion(infoTablaDeEntradas*);
+void liberarInfoTabla(infoTablaDeEntradas*);
+void liberarStorage();
 void liberarMemoriaInstancia();
 
 

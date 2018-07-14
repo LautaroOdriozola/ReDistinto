@@ -26,15 +26,13 @@ endif
 all: ESI
 
 dependents:
-	-cd /home/utnso/workspace/commons/Debug && $(MAKE) all
-	-cd /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug && $(MAKE) all
-	-cd /home/utnso/workspace/parsi/Debug && $(MAKE) all
+	-cd /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug && $(MAKE) clean all
 
 # Tool invocations
-ESI: $(OBJS) $(USER_OBJS) /home/utnso/workspace/commons/Debug/libcommons.so /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/libsocket.so /home/utnso/workspace/parsi/Debug/libparsi.so
+ESI: $(OBJS) $(USER_OBJS) /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/libsocket.so
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	gcc -L"/home/utnso/workspace/parsi/Debug" -L"/home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug" -L"/home/utnso/workspace/commons/Debug" -o "ESI" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc -L"/home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug" -o "ESI" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -44,8 +42,6 @@ clean:
 	-@echo ' '
 
 .PHONY: all clean dependents
-/home/utnso/workspace/commons/Debug/libcommons.so:
 /home/utnso/Escritorio/tp-2018-1c-EnMiCompuCompilaba/socket/Debug/libsocket.so:
-/home/utnso/workspace/parsi/Debug/libparsi.so:
 
 -include ../makefile.targets

@@ -1,4 +1,3 @@
-#include "ESI.h"
 #include "funcionesESI.h"
 
 
@@ -21,11 +20,18 @@ int main(int argc, char **argv){
 
 	cargarConfigESI(configuracionESI);
 
+	listaDeInstrucciones = list_create();
+	INICIO_DE_INSTRUCCION = 0;
+
 	//Armo el ID_ESI
 	char* ptr;
 	ID_ESI = strtol(argv[3], &ptr, 10);
 
 	log_debug(logger, "SOY EL ESI NRO = %d", ID_ESI);
+
+	archivoAParsear = abrirArchivoAParsear(argv[2]);
+	//Imprimo script a ejecutar y cuento lineas del script
+	contarLineas(archivoAParsear);
 
 	// conexion con coordinador
 	socketServerCoordinador = conectarAServer(COORDINADOR_IP, PUERTO_COORDINADOR);
@@ -43,13 +49,13 @@ int main(int argc, char **argv){
 	// Envio el nro (ID)
 	sendDeNotificacion(socketServerPlanificador, (uint32_t) ID_ESI);
 
+	cantidadDeInstrucciones = list_size(listaDeInstrucciones);
+	// Envio cantidad de instrucciones a parsear
+	sendDeNotificacion(socketServerPlanificador, (uint32_t) cantidadDeInstrucciones);
+
 	//Le mando al coordinador que ESI soy
 	log_info(logger,"Envio ID de ESI al COORDINADORR.");
 	sendDeNotificacion(socketServerCoordinador, (uint32_t) ID_ESI);
-
-
-
-	archivoAParsear = abrirArchivoAParsear(argv[2]);
 
 	int corte = 1;
 	while(corte){
@@ -62,19 +68,22 @@ int main(int argc, char **argv){
 				manejarOperacionDeParseo();
 				break;
 
+			case ABORTAR_ESI:
+				log_error(logger,"DESPIDIENDOME DE ESTE MUNDO...");
+				log_error(logger,"MURIENDO LENTAMENTE..");
+				liberarMemoriaESI();
+				break;
+
 			case 0:
 				log_info(logger,"Murio el PLANIFICADOR");
 				log_info(logger,"Comienzo a morir lentamente...");
-				//liberarMemoriaESI();
-				exit(-1);
+				liberarMemoriaESI();
 				break;
 
 			default:
 				log_info(logger,"No se puede realizar ninguna operacion.");
 				log_info(logger,"Comienzo a morir lentamente...");
-				//liberarMemoriaESI();
-
-
+				liberarMemoriaESI();
 
 
 		}	//Cierro switch
@@ -82,7 +91,6 @@ int main(int argc, char **argv){
 	}	//Cierro while
 
 
-	//liberarMemoriaESI();
-	log_destroy(logger);
+	liberarMemoriaESI();
 	return EXIT_SUCCESS;
 }

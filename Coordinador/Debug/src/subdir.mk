@@ -5,16 +5,19 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/Coordinador.c \
+../src/algoritmosDistribucion.c \
 ../src/estructuras.c \
 ../src/genericasCoordinador.c 
 
 OBJS += \
 ./src/Coordinador.o \
+./src/algoritmosDistribucion.o \
 ./src/estructuras.o \
 ./src/genericasCoordinador.o 
 
 C_DEPS += \
 ./src/Coordinador.d \
+./src/algoritmosDistribucion.d \
 ./src/estructuras.d \
 ./src/genericasCoordinador.d 
 

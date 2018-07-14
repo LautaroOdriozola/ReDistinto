@@ -1,0 +1,4 @@
+GET hola 
+SET hola Lautaro
+STORE hola
+STORE postre:ingrediente1
