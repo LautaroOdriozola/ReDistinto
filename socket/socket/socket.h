@@ -61,6 +61,7 @@
 
 #define BLOQUEAR_ESI 116
 #define ABORTAR_ESI 117
+#define NECESITO_COMPACTAR 118
 
 // Saber si ocupa mas de una entrada el valor
 #define	VARIAS_ENTRADAS true

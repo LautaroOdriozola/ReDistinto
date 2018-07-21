@@ -25,7 +25,7 @@ infoAlgoritmoDistribucion* getInstanciaLeastSpaceUsed(){
 		//Consigo la info de la posicion
 		infoAlgoritmoDistribucion* info = (infoAlgoritmoDistribucion*) list_get(instanciasConectadas,i);
 
-		log_trace(logger, "PREGUNTANDO A INSTANCIA CON SOCKET = %d CUANTAS ENTRADAS LIBRES TIENE");
+		log_trace(logger, "PREGUNTANDO A INSTANCIA CON SOCKET = %d CUANTAS ENTRADAS LIBRES TIENE", info->socketInstancia);
 		sendDeNotificacion(info->socketInstancia, OPERACION_BLOQUES_LIBRES);
 
 		info->cantidadEntradasLibres = recvDeNotificacion(info->socketInstancia);
@@ -48,25 +48,8 @@ bool existeEspacioLibreIgual(infoAlgoritmoDistribucion * instancia1, infoAlgorit
 infoAlgoritmoDistribucion * encontrarInstanciaConMayorEspacioLibre(){
 
 	ordenarListaDeInstanciasDeMayorToMenor();
-	int cantidadDeInstancias = list_size(instanciasConectadas);
 	infoAlgoritmoDistribucion * instancia1 = (infoAlgoritmoDistribucion *) list_get(instanciasConectadas, 0);
-
-	//Este if es para poder comparar mas de UNA INSTANCIA
-	if(cantidadDeInstancias > 1){
-		infoAlgoritmoDistribucion * instancia2 = (infoAlgoritmoDistribucion *) list_get(instanciasConectadas, 1);
-
-		//Si las primeras dos instancias son igales defino a elegir por EQUITATIVE LOAD
-		if(existeEspacioLibreIgual(instancia1,instancia2)){
-			infoAlgoritmoDistribucion * nuevaInstancia = getInstanciaEquitativeLoad();
-			return nuevaInstancia;
-		} else{
-		//Si las primeras dos instancias son distintas elijo la que tiene mayor espacio disponible
-			return instancia1;
-		}
-	// Si existe solo una instancia devuelvo esa
-	} else{
-		return instancia1;
-	}
+	return instancia1;
 }
 
 

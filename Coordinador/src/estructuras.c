@@ -164,7 +164,7 @@ void manejarOperacionGet(int socket){
 
 
 	log_warning(logger,"!!!!!!!!!!PROCESANDO INSTRUCCION!!!!!!!!!!!!!");
-	sleep(RETARDO/1000);
+	usleep(RETARDO*1000);
 
 	/*
 	// Cacheo Error de tamaño de clave
@@ -242,7 +242,7 @@ void manejarOperacionSet(int socket){
 		int socketInstancia = instancia->socketInstancia;
 
 		log_warning(logger,"!!!!!!!!!!PROCESANDO INSTRUCCION!!!!!!!!!!!!!");
-		sleep(RETARDO/1000);
+		usleep(RETARDO*1000);
 
 		int largoClave =  string_length(claveNueva);
 		int largoValor = string_length(valorParaAlmacenar);
@@ -266,24 +266,40 @@ void manejarOperacionSet(int socket){
 		int resultadoOperacionSet = recvDeNotificacion(socketInstancia);
 		log_info(logger,"Recibo RESPUESTA de la INSTANCIA elegida.");
 
-		if(resultadoOperacionSet == OPERACION_EXITO){
-			sendDeNotificacion(socket, OPERACION_EXITO);
-			log_trace(logger, "OPERACION SET realizada con EXITO!");
-			log_info(logger, "Envio RESPUESTA de operacion a ESI NRO = %d", id);
+		switch(resultadoOperacionSet){
+			case OPERACION_EXITO:
+				sendDeNotificacion(socket, OPERACION_EXITO);
+				log_trace(logger, "OPERACION SET realizada con EXITO!");
+				log_info(logger, "Envio RESPUESTA de operacion a ESI NRO = %d", id);
 
-			//LOGUEAR RESPUESTA EN CASO DE SER EXITOSA
-			loguearRespuestaSet(id,claveNueva,valorParaAlmacenar);
-			log_info(logger, "Logueando operacion en LOG DE OPERACIONES para el ESI NRO = %d", id);
+				//LOGUEAR RESPUESTA EN CASO DE SER EXITOSA
+				loguearRespuestaSet(id,claveNueva,valorParaAlmacenar);
+				log_info(logger, "Logueando operacion en LOG DE OPERACIONES para el ESI NRO = %d", id);
 
-			free(claveNueva);
-			free(valorParaAlmacenar);
+				free(claveNueva);
+				free(valorParaAlmacenar);
+				break;
 
-		} else{
-			free(claveNueva);
-			free(valorParaAlmacenar);
-			log_error(logger,"Informando al ESI NRO = %d que no se pudo realizar la OPERACION SET", id);
-			sendDeNotificacion(socket, ERROR_DE_INSTANCIA);
+			case NECESITO_COMPACTAR:
+				sendDeNotificacion(socket,OPERACION_EXITO);
+				log_trace(logger, "INSTANCIA ME DICE QUE NECESITA COMPACTAR");
+
+				free(claveNueva);
+				free(valorParaAlmacenar);
+				break;
+
+			case ERROR_DE_INSTANCIA:
+				sendDeNotificacion(socket, ERROR_DE_INSTANCIA);
+				log_error(logger,"Informando al ESI NRO = %d que no se pudo realizar la OPERACION SET", id);
+
+				free(claveNueva);
+				free(valorParaAlmacenar);
+				break;
+
+			default:
+				break;
 		}
+
 
 	} else{
 		free(claveNueva);
@@ -304,9 +320,8 @@ void manejarOperacionStore(int socket){
 	char* claveNueva = recibirString(socket);
 	log_info(logger, "Recibo clave %s por parte del ESI NRO = %d", claveNueva, id);
 
-
 	log_warning(logger,"!!!!!!!!!!PROCESANDO INSTRUCCION!!!!!!!!!!!!!");
-	sleep(RETARDO/1000);
+	usleep(RETARDO*1000);
 
 
 	int tamanio = 0;
@@ -350,6 +365,13 @@ void manejarOperacionStore(int socket){
 			sendDeNotificacion(socket, ABORTAR_ESI);
 			free(claveBloqueada);
 			//eliminarHiloDeConexion(socket);
+			close(socket);
+			break;
+
+		case ERROR_CLAVE_NO_IDENTIFICADA:
+			log_error(logger, "ERROR DE CLAVE NO IDENTIFICADA! ABORTANDO ESI NRO = %d", id);
+			sendDeNotificacion(socket, ERROR_CLAVE_NO_IDENTIFICADA);
+			free(claveBloqueada);
 			close(socket);
 			break;
 

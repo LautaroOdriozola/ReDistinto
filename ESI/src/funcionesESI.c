@@ -117,7 +117,8 @@ void manejarOperacionDeParseo(){
 	    if(parsed->valido && parsed != NULL){
 
 	    	log_warning(logger,"PARSEANDO LINEA...");
-	    	sleep(1);
+	    	usleep(100);
+	    	//sleep(1);
 
 	        switch(parsed->keyword){
 
@@ -205,13 +206,20 @@ void manejarOperacionDeParseo(){
 	              	int respuestaSet = recvDeNotificacion(socketServerCoordinador);
 	              	log_info(logger,"Recibo respuesta por parte del COORDINADOR de la operacion SET");
 
-	              	// SWITCH O IF ANIDADOS?
-	              	if(respuestaSet == ERROR_DE_INSTANCIA){
-	              		liberarMemoriaESI();
-	              	}
-
 	              	sendDeNotificacion(socketServerPlanificador, respuestaSet);
 	              	log_info(logger,"Envio respuesta de la operacion SET a PLANIFICADOR");
+
+	              	switch(respuestaSet){
+
+	              		case ERROR_DE_INSTANCIA:
+	              			liberarMemoriaESI();
+	              			break;
+
+	              		case ERROR_CLAVE_NO_IDENTIFICADA:
+	              			log_error(logger,"ERROR DE CLAVE NO IDENTIFICADA");
+	              			liberarMemoriaESI();
+	              			break;
+	              	}
 
 	              	free(claveSet);
 	              	free(valor);
@@ -254,6 +262,19 @@ void manejarOperacionDeParseo(){
 	            			log_error(logger, "Muriendo lentamente...");
 	            			liberarMemoriaESI();
 	            			break;
+
+	              		case ERROR_DE_INSTANCIA:
+	              			log_error(logger,"ERROR DE INSTANCIA AL HACER EL STORE");
+	              			sendDeNotificacion(socketServerPlanificador, respuesta);
+	              			liberarMemoriaESI();
+	              			break;
+
+	              		case ERROR_CLAVE_NO_IDENTIFICADA:
+	              			sendDeNotificacion(socketServerPlanificador, respuesta);
+	              			log_error(logger,"ERROR DE CLAVE NO IDENTIFICADA");
+	              			liberarMemoriaESI();
+	              			break;
+
 
 	            		default:
 	            			break;

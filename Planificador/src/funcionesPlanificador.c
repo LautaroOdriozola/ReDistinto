@@ -1,4 +1,4 @@
-#include "funcionesPlanificador.h"
+ #include "funcionesPlanificador.h"
 #include "funcionesESI.h"
 
 void cargarConfigPlanificador(t_config* configuracion){
@@ -242,9 +242,9 @@ void manejarRespuestaEliminarClave(int resultado){
 			sendDeNotificacion(socketServerCoordinador, OPERACION_EXITO);
 			break;
 
-		case ABORTAR_ESI:
+		case ERROR_CLAVE_NO_IDENTIFICADA:
 			log_error(logger, "Avisando a COORDINADOR que no pude eliminar la clave");
-			sendDeNotificacion(socketServerCoordinador, ABORTAR_ESI);
+			sendDeNotificacion(socketServerCoordinador, ERROR_CLAVE_NO_IDENTIFICADA);
 			break;
 
 		default:
@@ -286,10 +286,63 @@ int eliminarClave(char* claveAEliminar){
 		desbloquearClave(claveAEliminar);
 		resultadoOperacion = OPERACION_EXITO;
 	} else{
-		resultadoOperacion = ABORTAR_ESI;
+		resultadoOperacion = ERROR_CLAVE_NO_IDENTIFICADA;
 	}
 
 	return resultadoOperacion;
+}
+
+void desbloquearClavesDeESI(infoESI * ESI){
+
+	//Filtro para saber cuantas veces tengo que buscar las claves a desbloquear por ese id
+	t_list * lista = filtrarClavesBloqueadasPorID(ESI->ID_ESI);
+	int clavesABorrar = list_size(lista);
+	int i;
+
+	for(i=0; i<clavesABorrar; i++){
+
+		bool tieneID(infoClaveBloqueada * data){
+			return data->ID_ESI==ESI->ID_ESI;
+		}
+
+		infoClaveBloqueada * info = (infoClaveBloqueada*) list_find(listaClavesBloqueadas, (void*) tieneID);
+
+		desbloquearClave(info->claveBloqueada);
+	}
+
+	list_destroy(lista);
+}
+
+void desbloquearClave(char* claveAEliminar){
+	// AL ELIMINAR LA CLAVE ME FIJO SI PUEDO DESBLOQUEAR ALGUN ESI QUE FUE BLOQUEADO POR ESA CLAVE!!
+	if(existeESIBloqueadoPorClave(claveAEliminar)){
+		infoESI * ESI_PARA_LISTOS = encontrarESIConClaveBloqueada(claveAEliminar);
+		if(ESI_PARA_LISTOS == NULL){
+			log_error(logger, "NO PUDE ENCONTRAR EL ESI CON CLAVE = %s", claveAEliminar);
+		} else{
+
+			log_trace(logger, "EXISTE ESI = %d BLOQUEADO CON CLAVE = %s", ESI_PARA_LISTOS->ID_ESI, claveAEliminar);
+			eliminarClaveBloqueada(claveAEliminar);
+			log_trace(logger,"ELIMINANDO ESI = %d CON CLAVE BLOQUEADA = %s DE COLA BLOQUEADOS", ESI_PARA_LISTOS->ID_ESI, claveAEliminar);
+
+			/*************************/
+			//PASARLE EL ESI ENCONTRADO Y QUE ME DEVUELVA LA MISMA ESTRUCTURA PERO YA ELIMINADA DE LA COLA DE BLOQUEADOS
+			infoESI * ESI = eliminarESIBloqueado(ESI_PARA_LISTOS);
+			/************************/
+
+			log_trace(logger, "ESI = %d PASANDOLO A LA COLA DE LISTOS CON SOCKET = %d", ESI->ID_ESI, ESI->socketESI);
+			//ESI_PARA_LISTOS->estado = listo;
+			pthread_mutex_lock(&colaReady);
+			list_add(listaListos, ESI);
+			pthread_mutex_unlock(&colaReady);
+			sem_post(&esiListos);
+			log_trace(logger, "Encolando ESI = %d -> COLA DE READY", ESI->ID_ESI);
+		}
+
+	} else{
+		log_warning(logger, "NO EXISTE ESI BLOQUEADO CON CLAVE = %s", claveAEliminar);
+		eliminarClaveBloqueada(claveAEliminar);
+	}
 }
 
 void eliminarClaveBloqueada(char* clave){
@@ -325,37 +378,7 @@ infoESI * eliminarESIBloqueado(infoESI * ESI){
 	return info->ESI;
 }
 
-void desbloquearClave(char* claveAEliminar){
-	// AL ELIMINAR LA CLAVE ME FIJO SI PUEDO DESBLOQUEAR ALGUN ESI QUE FUE BLOQUEADO POR ESA CLAVE!!
-	if(existeESIBloqueadoPorClave(claveAEliminar)){
-		infoESI * ESI_PARA_LISTOS = encontrarESIConClaveBloqueada(claveAEliminar);
-		if(ESI_PARA_LISTOS == NULL){
-			log_error(logger, "NO PUDE ENCONTRAR EL ESI CON CLAVE = %s", claveAEliminar);
-		} else{
 
-			log_trace(logger, "EXISTE ESI = %d BLOQUEADO CON CLAVE = %s", ESI_PARA_LISTOS->ID_ESI, claveAEliminar);
-			eliminarClaveBloqueada(claveAEliminar);
-			log_trace(logger,"ELIMINANDO ESI = %d CON CLAVE BLOQUEADA = %s DE COLA BLOQUEADOS", ESI_PARA_LISTOS->ID_ESI, claveAEliminar);
-
-			/*************************/
-			//PASARLE EL ESI ENCONTRADO Y QUE ME DEVUELVA LA MISMA ESTRUCTURA PERO YA ELIMINADA DE LA COLA DE BLOQUEADOS
-			infoESI * ESI = eliminarESIBloqueado(ESI_PARA_LISTOS);
-			/************************/
-
-			log_trace(logger, "ESI = %d PASANDOLO A LA COLA DE LISTOS CON SOCKET = %d", ESI->ID_ESI, ESI->socketESI);
-			//ESI_PARA_LISTOS->estado = listo;
-			pthread_mutex_lock(&colaReady);
-			list_add(listaListos, ESI);
-			pthread_mutex_unlock(&colaReady);
-			sem_post(&esiListos);
-			log_trace(logger, "Encolando ESI = %d -> COLA DE READY", ESI->ID_ESI);
-		}
-
-	} else{
-		log_warning(logger, "NO EXISTE ESI BLOQUEADO CON CLAVE = %s", claveAEliminar);
-		eliminarClaveBloqueada(claveAEliminar);
-	}
-}
 
 // Me fijo si la clave esta en la lista de claves causantes por el bloqueo de un ESI
 bool existeESIBloqueadoPorClave(char* clave){
@@ -590,7 +613,7 @@ void liberarClave(infoClaveBloqueada* info){
 }
 
 void liberarHilo(infoHilos * data){
-	close(data->socket);
+	//close(data->socket);
 	pthread_detach(data->hiloAtendedor);
 	free(data);
 }
@@ -661,3 +684,137 @@ void liberarMemoriaPlanificador(){
 	log_destroy(logger);
 	exit(-1);
 }
+
+
+//********************** OK ***************************//
+t_list * filtrarBloqueadosPorClave(char* clave){
+
+	bool tieneClave(infoESIBloqueado * data){
+		return strcmp(data->claveCausante,clave)==0;
+	}
+
+	t_list * lista = list_filter(listaBloqueados, (void*) tieneClave);
+
+	return lista;
+}
+
+t_list * filtrarClavesBloqueadasPorID(int id){
+
+	bool tieneID(infoClaveBloqueada * data){
+		return data->ID_ESI == id;
+	}
+
+	t_list * lista = list_filter(listaClavesBloqueadas, (void*) tieneID);
+
+	return lista;
+
+}
+
+bool existeDeadlock(char* primerRecurso, t_list * lista){
+
+	bool existeRecursoEnLista(infoClaveBloqueada * data){
+		return (strcmp(data->claveBloqueada, primerRecurso)==0);
+	}
+
+	return list_any_satisfy(lista, (void*) existeRecursoEnLista);
+}
+
+void kill_ESI(char ** param){
+	char * idEnString = param[1];
+	int id = atoi(idEnString);
+	log_debug(logger,"EJECUTANDO KILL EN EL ESI =%d", id);
+
+	//Busco en cola de READY
+	infoESI * ESI = buscarESIxID(id);
+
+	// Si da NULL esta en cola de bloqueados
+	if(ESI == NULL){
+		bool igualID(infoESIBloqueado* str){
+			return (str->ESI->ID_ESI==id);
+		}
+		pthread_mutex_lock(&colaBloqueados);
+		infoESIBloqueado * ESI_Block = (infoESIBloqueado *) list_remove_by_condition(listaBloqueados,(void *)igualID);
+		pthread_mutex_unlock(&colaBloqueados);
+		infoESI * ESI_BLOQUEADO = ESI_Block->ESI;
+		log_error(logger,"DANDO SEÑAL A ESI NRO = %d QUE FINALICE.",ESI_BLOQUEADO->ID_ESI);
+		sendDeNotificacion(ESI_BLOQUEADO->socketESI, ABORTAR_ESI);
+		eliminarHiloDeConexion(ESI_BLOQUEADO->socketESI);
+		desbloquearClavesDeESI(ESI_BLOQUEADO);
+		liberarESI(ESI_BLOQUEADO);
+	} else {
+		log_error(logger,"DANDO SEÑAL A ESI NRO = %d QUE FINALICE.",ESI->ID_ESI);
+		sendDeNotificacion(ESI->socketESI, ABORTAR_ESI);
+		pthread_mutex_lock(&colaFinalizados);
+		ESI = removerESI(listaListos, ESI->ID_ESI);
+		pthread_mutex_unlock(&colaFinalizados);
+		eliminarHiloDeConexion(ESI->socketESI);
+		desbloquearClavesDeESI(ESI);
+		liberarESI(ESI);
+	}
+
+}
+
+
+void deadlock(){
+
+	t_list * listaAuxDeClavesBloqueadas = list_create();
+	list_add_all(listaAuxDeClavesBloqueadas, listaClavesBloqueadas);
+	int largoClavesBloqueadas = list_size(listaAuxDeClavesBloqueadas);
+	int i;
+
+	for(i=0; i<largoClavesBloqueadas;i++){
+
+		//Saco info de la clave bloqueada (clave e id del esi q la bloqueo)
+		infoClaveBloqueada * datosClave = (infoClaveBloqueada*) list_get(listaAuxDeClavesBloqueadas, i);
+
+		//log_info(logger, "Buscando deadlocks en ESI %d", datosClave->ID_ESI);
+
+		int primerESI = datosClave->ID_ESI;
+		char * primerRecurso = datosClave->claveBloqueada;
+
+		// filtro a los que esten bloqueados por la clave		//***********LISTA DE ESIS BLOQUEADOS ES LA FILTRADA***********//
+		t_list * bloqueadosPorClave = filtrarBloqueadosPorClave(primerRecurso);
+
+		if(list_size(bloqueadosPorClave)==0){
+			//log_trace(logger,"No hay ESIS bloqueados por clave = %s", primerRecurso);
+		} else{
+
+			int j;
+
+			for(j=0; j<list_size(bloqueadosPorClave); j++){
+
+				infoESIBloqueado * datosESIBloqueado = (infoESIBloqueado*) list_get(bloqueadosPorClave,j);
+
+				int segundoESI = datosESIBloqueado->ESI->ID_ESI;
+
+				// filtro claves que esten bloqueadas por id		//*************LISTA DE CLAVES BLOQUEADAS ES LA FILTRADA*********//
+				//t_list * bloqueadosPorID = filtrarClavesBloqueadasPorID(segundoESI);
+
+				/*********************************************
+				log_info(logger,"COMPARANDO %s CON:", primerRecurso);
+				int n;
+				for(n=0; n< list_size(bloqueadosPorID); n++){
+					infoClaveBloqueada * data = (infoClaveBloqueada*) list_get(bloqueadosPorID, n);
+					log_error(logger,"CLAVE A COMPARAR =%s", data->claveBloqueada);
+				}
+				*********************************************/
+
+				// verifico si el primer esi encontrado esta bloqueado por alguna clave del segundo esi
+				if(existeDeadlock(primerRecurso, bloqueadosPorClave)){
+					log_trace(logger, "EXISTE DEADLOCK!");
+					log_warning(logger, "ENTRE LOS ESIS %d AND %d", primerESI, segundoESI);
+				} else{
+					log_info(logger, "NO EXISTE DEADLOCK ENTRE ESIS %d AND %d", primerESI, segundoESI);
+				}
+
+				//list_destroy(bloqueadosPorID);
+			}
+
+		}
+
+		list_destroy(bloqueadosPorClave);
+	}
+
+	list_destroy(listaAuxDeClavesBloqueadas);
+}
+

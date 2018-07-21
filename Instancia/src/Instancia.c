@@ -7,6 +7,8 @@ int main(int argc, char **argv) {
 	// ARGUMENTOS:
 	// ./Instancia instancia.ini
 
+	signal(SIGINT, laParcaDeInstancia);
+
 	char * fileLog = "Instancia Logs.txt";
 	logger = log_create(fileLog, "Instancia", 1, 0);
 	log_info(logger, "Inicializando proceso Instancia");

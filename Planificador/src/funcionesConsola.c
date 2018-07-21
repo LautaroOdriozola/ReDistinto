@@ -88,10 +88,13 @@ void ejecutarComando(uint32_t nro, char** parametros){
 			listar(parametros);
 			break;
 		case 6:
+			kill_ESI(parametros);
 			break;
 		case 7:
 			break;
 		case 8:
+			log_debug(logger,"EJECUTANDO COMANDO DE DEADLOCK!");
+			deadlock();
 			break;
 
 		default:{

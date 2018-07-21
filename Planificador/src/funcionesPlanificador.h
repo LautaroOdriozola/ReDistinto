@@ -92,8 +92,8 @@ sem_t esiListos;
 t_list * hilosParaConexiones;
 t_list * listaListos;
 t_list * listaTerminados;
-t_list * listaBloqueados;
-t_list * listaClavesBloqueadas;
+t_list * listaBloqueados; 		//infoESIBloqueado
+t_list * listaClavesBloqueadas; //infoClaveBloqueada
 
 
 
@@ -103,8 +103,10 @@ void manejarRespuestaAgregarClave(int);
 void manejarRespuestaEliminarClave(int);
 int agregarClave(char*,int);
 int eliminarClave(char*);
-infoESI* eliminarESIBloqueado(infoESI*);
+void desbloquearClavesDeESI(infoESI *);
 void desbloquearClave(char*);
+void eliminarClaveBloqueada(char*);
+infoESI* eliminarESIBloqueado(infoESI*);
 bool existeESIBloqueadoPorClave(char*);
 infoESI * encontrarESIConClaveBloqueada(char *);
 
@@ -125,6 +127,12 @@ void liberarClave(infoClaveBloqueada*);
 void liberarHilo(infoHilos *);
 void parcaDePlanificador(int);
 void liberarMemoriaPlanificador();
+
+t_list * filtrarBloqueadosPorClave(char* clave);
+t_list * filtrarClavesBloqueadasPorID(int);
+bool existeDeadlock(char*, t_list *);
+void kill_ESI(char **);
+void deadlock();
 
 
 #endif /* FUNCIONESPLANIFICADOR_H_ */

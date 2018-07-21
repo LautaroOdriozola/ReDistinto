@@ -10,6 +10,7 @@
 
 #include "genericasCoordinador.h"
 
+
 infoAlgoritmoDistribucion* getInstanciaEquitativeLoad();
 infoAlgoritmoDistribucion* getInstanciaLeastSpaceUsed();
 bool existeEspacioLibreIgual(infoAlgoritmoDistribucion *, infoAlgoritmoDistribucion *);

@@ -17,6 +17,7 @@ typedef struct _tablaDeEntrada{
 	int nroEntrada;
 	int tamanioValor;
 	bool variasEntradas;
+	int cantidadDeReferencias;
 } infoTablaDeEntradas;
 
 typedef struct _infoPosicion{
@@ -37,6 +38,7 @@ int socketServerCoordinador;
 // VARIABLES PARA CREAR ESTRUCTURAS ADMINISTRATIVAS
 uint32_t TAMANIO_ENTRADA;
 uint32_t CANTIDAD_ENTRADAS;
+int punteroParaCircular;
 
 t_list * tablaDeEntradas;
 void* storage;
@@ -52,6 +54,11 @@ void cargarConfigInstancia(t_config*);
 void iniciarEstructurasAdministrativasInstancia();
 t_bitarray * crearBitArray(uint32_t);	// Creo bitArray a partir de la cantidad de entradas y la estructura
 uint32_t escribirEnMemoria(infoTablaDeEntradas *, char*);
+
+int devolverIndexParaAlmacenarValor(char*);
+bool existeLugarContiguo(char*);
+bool validarEspacioReal(char*);
+
 int devolverPosicionLibreStorage();
 
 //Funciones principales de operacion
@@ -63,6 +70,12 @@ int calcularEntradasLibres();
 
 void actualizarClaveAndValor(char*, char*);
 void almacenarClaveAndValor(char*, char* );
+void aplicarAlgoritmoDeReemplazo(char*);
+int calcularCantidadEntradasAtomicas();
+void manejarAlgoritmoLRU(char*);
+void ordenarPorMayorReferencia();
+void manejarAlgoritmoCircular(char*);
+void sumarReferencia();
 bool existeClaveEnTabla(char*);
 
 void* realizarDump();
@@ -82,6 +95,6 @@ int encontrarPosicion(infoTablaDeEntradas*);
 void liberarInfoTabla(infoTablaDeEntradas*);
 void liberarStorage();
 void liberarMemoriaInstancia();
-
+void laParcaDeInstancia(int);
 
 #endif /* FUNCIONESINSTANCIA_H_ */

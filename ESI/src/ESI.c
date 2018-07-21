@@ -75,14 +75,14 @@ int main(int argc, char **argv){
 				break;
 
 			case 0:
-				log_info(logger,"Murio el PLANIFICADOR");
-				log_info(logger,"Comienzo a morir lentamente...");
+				log_error(logger,"Murio el PLANIFICADOR");
+				log_error(logger,"Comienzo a morir lentamente...");
 				liberarMemoriaESI();
 				break;
 
 			default:
-				log_info(logger,"No se puede realizar ninguna operacion.");
-				log_info(logger,"Comienzo a morir lentamente...");
+				log_error(logger,"No se puede realizar ninguna operacion.");
+				log_error(logger,"Comienzo a morir lentamente...");
 				liberarMemoriaESI();
 
 

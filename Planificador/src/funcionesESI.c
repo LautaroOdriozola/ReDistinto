@@ -67,6 +67,17 @@ void manejarESI(int socketESI){
 				sem_post(&semPlanificar);
 				break;
 
+			case ERROR_DE_INSTANCIA:
+				log_error(logger,"ESI MUERE POR ERROR DE INSTANCIA");
+				eliminarHiloDeConexion(socketESI);
+				sem_post(&semPlanificar);
+				break;
+
+			case ERROR_CLAVE_NO_IDENTIFICADA:
+				log_error(logger, "ESI MUERE POR ERROR DE CLAVE NO IDENTIFICADA");
+				eliminarHiloDeConexion(socketESI);
+				sem_post(&semPlanificar);
+				break;
 			case 0:
 				//eliminarHiloDeConexion(socketESI);
 				close(socketESI);
@@ -114,6 +125,7 @@ void ejecucionDeESIExitosa(){
 	estimarRafaga(ESI_EJECUTANDO);
 
 	if(ESI_EJECUTANDO->cantidadDeInstrucciones == 0){
+		desbloquearClavesDeESI(ESI_EJECUTANDO);
 		pasarESIAFinalizado(ESI_EJECUTANDO);
 		ESI_EJECUTANDO->estado = finalizado;
 		//sem_post(&esiListos);
